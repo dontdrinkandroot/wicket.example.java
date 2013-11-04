@@ -2,23 +2,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
 	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
 <head>
-	<title>DecoratorPage</title>
+<title>DecoratorPage</title>
 </head>
 <body>
 	<wicket:extend>
-		<div class="navbar navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<ul class="nav">
+		<nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span> <span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Wicket Example</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
 						<li wicket:id="navItem"></li>
 					</ul>
-					<ul class="nav pull-right">
+					<ul class="nav navbar-nav navbar-right">
 					</ul>
 				</div>
 			</div>
-		</div>
+		</nav>
 		<div class="container">
-		<wicket:child />
+			<wicket:child />
 		</div>
 	</wicket:extend>
 </body>

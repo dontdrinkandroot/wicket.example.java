@@ -78,14 +78,6 @@ public class ButtonPage extends AbstractBootstrapPage<Void> {
 				this.debug("dangerButton Clicked");
 			}
 		}.setButtonStyle(ButtonStyle.DANGER).add(new ButtonBlockLevelBehavior()));
-		this.add(new ButtonLink<Void>("inverseButton", null, new Model<String>("inverseButton")) {
-
-			@Override
-			public void onClick() {
-
-				this.debug("inverseButton Clicked");
-			}
-		}.setButtonStyle(ButtonStyle.INVERSE).add(new ButtonBlockLevelBehavior()));
 		this.add(new ButtonLink<Void>("linkButton", null, new Model<String>("linkButton")) {
 
 			@Override
@@ -95,14 +87,14 @@ public class ButtonPage extends AbstractBootstrapPage<Void> {
 			}
 		}.setButtonStyle(ButtonStyle.LINK).add(new ButtonBlockLevelBehavior()));
 
-		this.add(new ButtonLink<Void>("miniButton", null, new Model<String>("miniButton")) {
+		this.add(new ButtonLink<Void>("extraSmallButton", null, new Model<String>("extraSmallButton")) {
 
 			@Override
 			public void onClick() {
 
 				/* Noop */
 			}
-		}.setButtonSize(ButtonSize.MINI));
+		}.setButtonSize(ButtonSize.EXTRA_SMALL));
 		this.add(new ButtonLink<Void>("smallButton", null, new Model<String>("smallButton")) {
 
 			@Override

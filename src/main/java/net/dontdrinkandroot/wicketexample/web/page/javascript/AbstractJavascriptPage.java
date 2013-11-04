@@ -23,10 +23,6 @@ public class AbstractJavascriptPage<T> extends DecoratorSidebarPage<T> {
 				navItemView.newChildId(),
 				ScrollToBottomPage.class,
 				"ScrollToBottom"));
-		navItemView.add(new BookmarkablePageLinkItem(
-				navItemView.newChildId(),
-				PopulatingScrollToBottomPage.class,
-				"Populating ScrollToBottom"));
 	}
 
 }

@@ -1,7 +1,7 @@
 package net.dontdrinkandroot.wicketexample.web.page.bootstrap;
 
 import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButtonLink;
-import net.dontdrinkandroot.wicket.bootstrap.component.form.TextFieldControlGroup;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.TextFieldFormGroup;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.Form;
@@ -35,14 +35,14 @@ public class FormPage extends AbstractBootstrapPage<Void> {
 		validationForm.setOutputMarkupId(true);
 		this.add(validationForm);
 
-		final TextFieldControlGroup<String> eMailField =
-				new TextFieldControlGroup<String>("eMailField", new Model<String>(), new Model<String>("eMail"));
+		final TextFieldFormGroup<String> eMailField =
+				new TextFieldFormGroup<String>("eMailField", new Model<String>(), new Model<String>("eMail"));
 		eMailField.getFormComponent().add(EmailAddressValidator.getInstance());
 		eMailField.getFormComponent().setRequired(true);
 		validationForm.add(eMailField);
 
-		final TextFieldControlGroup<String> requiredField =
-				new TextFieldControlGroup<String>("requiredField", new Model<String>(), new Model<String>("required"));
+		final TextFieldFormGroup<String> requiredField =
+				new TextFieldFormGroup<String>("requiredField", new Model<String>(), new Model<String>("required"));
 		requiredField.getFormComponent().setRequired(true);
 		validationForm.add(requiredField);
 
