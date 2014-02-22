@@ -1,7 +1,8 @@
 package net.dontdrinkandroot.wicketexample.web.page.bootstrap;
 
 import net.dontdrinkandroot.wicket.behavior.CssClassAppender;
-import net.dontdrinkandroot.wicket.bootstrap.css.IconClass;
+import net.dontdrinkandroot.wicket.bootstrap.css.GlyphIconClass;
+import net.dontdrinkandroot.wicket.css.CssClass;
 
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -20,7 +21,7 @@ public class IconPage extends AbstractBootstrapPage<Void> {
 		RepeatingView iconItemView = new RepeatingView("iconItem");
 		this.add(iconItemView);
 
-		for (IconClass icon : IconClass.values()) {
+		for (CssClass icon : GlyphIconClass.values()) {
 
 			WebMarkupContainer iconItemContainer = new WebMarkupContainer(iconItemView.newChildId());
 			iconItemView.add(iconItemContainer);

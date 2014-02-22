@@ -2,16 +2,22 @@
 <html xmlns:wicket>
 <body>
 	<wicket:extend>
-		<div class="box">
-			<h2>Disabling and Validation</h2>
-			<form wicket:id="validationForm" class="form-horizontal">
-				<div wicket:id="eMailField"></div>
-				<div wicket:id="requiredField"></div>
-				<div class="form-actions">
-					<input type="submit" wicket:id="submitLink" />
-				</div>
-			</form>
-		</div>
+		<h2>Disabling and Validation</h2>
+		<form wicket:id="validationForm" role="form">
+			<div wicket:id="eMailField"></div>
+			<div wicket:id="requiredField"></div>
+			<div class="form-actions">
+				<input type="submit" wicket:id="submitLink" />
+			</div>
+		</form>
+
+		<h2>Horizontal Form</h2>
+		<form wicket:id="horizontalForm">
+			<div wicket:id="textFieldFormGroup"></div>
+			<div wicket:id="textAreaFormGroup"></div>
+			<div wicket:id="checkBoxFormGroup"></div>
+			<div wicket:id="selectFormGroup"></div>
+		</form>
 	</wicket:extend>
 </body>
 </html>

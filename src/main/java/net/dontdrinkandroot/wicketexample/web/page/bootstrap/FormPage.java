@@ -1,7 +1,15 @@
 package net.dontdrinkandroot.wicketexample.web.page.bootstrap;
 
+import java.util.Arrays;
+
 import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButtonLink;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.CheckBoxFormGroup;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.FormHorizontal;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.SelectFormGroup;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.TextAreaFormGroup;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.TextFieldFormGroup;
+import net.dontdrinkandroot.wicket.bootstrap.css.ColumnSize;
+import net.dontdrinkandroot.wicket.bootstrap.css.CombinedColumnSize;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.Form;
@@ -80,5 +88,37 @@ public class FormPage extends AbstractBootstrapPage<Void> {
 					}
 				};
 		validationForm.add(submitLink);
+
+		CombinedColumnSize labelSize = new CombinedColumnSize(ColumnSize.MD_3);
+		CombinedColumnSize formComponentSize = new CombinedColumnSize(ColumnSize.MD_9);
+
+		Form<Void> horizontalForm = new FormHorizontal<Void>("horizontalForm", labelSize, formComponentSize);
+		this.add(horizontalForm);
+		this.createFormComponents(horizontalForm);
+	}
+
+
+	private void createFormComponents(Form<Void> form) {
+
+		TextFieldFormGroup<String> textFieldFormGroup =
+				new TextFieldFormGroup<String>("textFieldFormGroup", new Model<String>(), Model.of("Text Field"));
+		form.add(textFieldFormGroup);
+
+		TextAreaFormGroup<String> textAreaFormGroup =
+				new TextAreaFormGroup<String>("textAreaFormGroup", new Model<String>(), Model.of("Text Area"));
+		form.add(textAreaFormGroup);
+
+		CheckBoxFormGroup checkBoxFormGroup =
+				new CheckBoxFormGroup("checkBoxFormGroup", new Model<Boolean>(), Model.of("Check Box"));
+		form.add(checkBoxFormGroup);
+
+		SelectFormGroup<Integer> selectFormGroup =
+				new SelectFormGroup<Integer>(
+						"selectFormGroup",
+						new Model<Integer>(2),
+						Model.of("Select"),
+						Arrays.asList(new Integer[] { 1, 2, 3, 4, 5 }));
+		form.add(selectFormGroup);
+
 	}
 }

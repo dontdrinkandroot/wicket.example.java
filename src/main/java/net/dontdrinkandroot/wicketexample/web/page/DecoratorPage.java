@@ -5,6 +5,11 @@ import net.dontdrinkandroot.wicket.bootstrap.component.item.BookmarkablePageLink
 import net.dontdrinkandroot.wicket.bootstrap.component.item.DropDownItem;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.AbstractBootstrapPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.ButtonPage;
+import net.dontdrinkandroot.wicketexample.web.page.bootstrap.DropDownPage;
+import net.dontdrinkandroot.wicketexample.web.page.bootstrap.FeedbackPage;
+import net.dontdrinkandroot.wicketexample.web.page.bootstrap.FormPage;
+import net.dontdrinkandroot.wicketexample.web.page.bootstrap.IconPage;
+import net.dontdrinkandroot.wicketexample.web.page.bootstrap.LabelBadgePage;
 import net.dontdrinkandroot.wicketexample.web.page.component.PageHeightScalingPage;
 import net.dontdrinkandroot.wicketexample.web.page.cookie.CookiePage;
 import net.dontdrinkandroot.wicketexample.web.page.event.EventPage;
@@ -48,7 +53,7 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 		this.feedbackPanel.setOutputMarkupId(true);
 		this.add(this.feedbackPanel);
 
-		this.add(new Label("pageHeader", this.getPageHeaderModel()));
+		this.add(new Label("pageHeading", this.getPageHeadingModel()));
 
 		RepeatingView navItemView = new RepeatingView("navItem");
 		this.createNavItems(navItemView);
@@ -69,12 +74,28 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 
 	private void createNavItems(RepeatingView navItemView) {
 
-		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), ButtonPage.class, "Bootstrap") {
+		navItemView.add(new DropDownItem(navItemView.newChildId(), "Bootstrap") {
 
 			@Override
 			protected boolean isActive() {
 
 				return AbstractBootstrapPage.class.isAssignableFrom(this.getPage().getClass());
+			}
+
+
+			@Override
+			protected void createDropDownItems(RepeatingView itemView) {
+
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), ButtonPage.class, "Buttons"));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), FormPage.class, "Forms"));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), IconPage.class, "Icons"));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), FeedbackPage.class, "Feedback"));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), DropDownPage.class, "Drop Down"));
+				itemView.add(new BookmarkablePageLinkItem(
+						itemView.newChildId(),
+						LabelBadgePage.class,
+						"Labels & Badges"));
+
 			}
 		});
 		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), ResourcesPage.class, "Resources"));
@@ -112,7 +133,7 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 	}
 
 
-	protected IModel<String> getPageHeaderModel() {
+	protected IModel<String> getPageHeadingModel() {
 
 		return this.getPageTitleModel();
 	}

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
-	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<html xmlns:wicket>
 <head>
-	<title>DecoratorSidebarPage</title>
+	<title>DecoratorWidePage</title>
 </head>
 <body>
 	<wicket:extend>
-		<h1 wicket:id="pageHeader"></h1>
+		<div class="page-header">
+			<h1 wicket:id="pageHeading"></h1>
+		</div>
 		<div wicket:id="feedbackPanel"></div>
 		<wicket:child />
 	</wicket:extend>

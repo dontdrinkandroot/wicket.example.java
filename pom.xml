@@ -30,7 +30,6 @@
 
 	<properties>
 		<net.dontdrinkandroot.wicket.version>0.4.0-SNAPSHOT</net.dontdrinkandroot.wicket.version>
-		<org.apache.wicket.version>6.11.0</org.apache.wicket.version>
 		<servlet-api.version>2.5</servlet-api.version>
 	</properties>
 
