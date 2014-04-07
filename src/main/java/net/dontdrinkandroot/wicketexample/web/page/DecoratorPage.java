@@ -1,6 +1,6 @@
 package net.dontdrinkandroot.wicketexample.web.page;
 
-import net.dontdrinkandroot.wicket.bootstrap.component.feedback.CloseableFencedFeedbackPanel;
+import net.dontdrinkandroot.wicket.bootstrap.component.feedback.FencedFeedbackPanel;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.BookmarkablePageLinkItem;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.DropDownItem;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.AbstractBootstrapPage;
@@ -49,7 +49,7 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 
 		super.onInitialize();
 
-		this.feedbackPanel = new CloseableFencedFeedbackPanel("feedbackPanel");
+		this.feedbackPanel = new FencedFeedbackPanel("feedbackPanel");
 		this.feedbackPanel.setOutputMarkupId(true);
 		this.add(this.feedbackPanel);
 
