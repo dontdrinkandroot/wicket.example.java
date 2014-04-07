@@ -1,16 +1,16 @@
 package net.dontdrinkandroot.wicketexample.web;
 
-import net.dontdrinkandroot.wicket.bootstrap.BootstrapWebApplication;
 import net.dontdrinkandroot.wicketexample.web.component.DateImageResource;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.ButtonPage;
 import net.dontdrinkandroot.wicketexample.web.page.resources.ResourcesPage;
 
 import org.apache.log4j.lf5.util.Resource;
 import org.apache.wicket.Page;
+import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.resource.ResourceReference;
 
 
-public class WicketApplication extends BootstrapWebApplication {
+public class WicketApplication extends WebApplication {
 
 	public WicketApplication() {
 
