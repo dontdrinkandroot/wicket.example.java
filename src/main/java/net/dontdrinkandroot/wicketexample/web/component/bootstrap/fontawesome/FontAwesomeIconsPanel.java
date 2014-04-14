@@ -1,4 +1,4 @@
-package net.dontdrinkandroot.wicketexample.web.component.bootstrap;
+package net.dontdrinkandroot.wicketexample.web.component.bootstrap.fontawesome;
 
 import java.util.HashSet;
 import java.util.Set;

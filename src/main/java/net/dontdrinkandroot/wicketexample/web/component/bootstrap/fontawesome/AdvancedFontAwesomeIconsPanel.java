@@ -1,4 +1,4 @@
-package net.dontdrinkandroot.wicketexample.web.component.bootstrap;
+package net.dontdrinkandroot.wicketexample.web.component.bootstrap.fontawesome;
 
 import net.dontdrinkandroot.wicket.bootstrap.behavior.IconBehavior;
 import net.dontdrinkandroot.wicket.bootstrap.component.panel.SimplePanel;

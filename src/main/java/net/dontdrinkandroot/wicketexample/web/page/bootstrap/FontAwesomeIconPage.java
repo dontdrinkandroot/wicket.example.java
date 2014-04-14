@@ -1,8 +1,8 @@
 package net.dontdrinkandroot.wicketexample.web.page.bootstrap;
 
 import net.dontdrinkandroot.wicket.bootstrap.headeritem.FontAwesomeCssHeaderItem;
-import net.dontdrinkandroot.wicketexample.web.component.bootstrap.AdvancedFontAwesomeIconsPanel;
-import net.dontdrinkandroot.wicketexample.web.component.bootstrap.FontAwesomeIconsPanel;
+import net.dontdrinkandroot.wicketexample.web.component.bootstrap.fontawesome.AdvancedFontAwesomeIconsPanel;
+import net.dontdrinkandroot.wicketexample.web.component.bootstrap.fontawesome.FontAwesomeIconsPanel;
 
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.model.IModel;
