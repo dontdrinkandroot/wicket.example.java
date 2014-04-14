@@ -7,6 +7,7 @@ import net.dontdrinkandroot.wicketexample.web.page.bootstrap.AbstractBootstrapPa
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.ButtonPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.DropDownPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.FeedbackPage;
+import net.dontdrinkandroot.wicketexample.web.page.bootstrap.FontAwesomeIconPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.FormPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.IconPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.LabelBadgePage;
@@ -88,6 +89,10 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), ButtonPage.class, "Buttons"));
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), FormPage.class, "Forms"));
+				itemView.add(new BookmarkablePageLinkItem(
+						itemView.newChildId(),
+						FontAwesomeIconPage.class,
+						"Font Awesome Icons"));
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), IconPage.class, "Icons"));
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), FeedbackPage.class, "Feedback"));
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), DropDownPage.class, "Drop Down"));
