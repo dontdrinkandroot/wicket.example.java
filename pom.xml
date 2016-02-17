@@ -3,11 +3,11 @@
 	<parent>
 		<groupId>net.dontdrinkandroot</groupId>
 		<artifactId>parent</artifactId>
-		<version>4</version>
+		<version>5</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>wicket.example</artifactId>
-	<version>0.4.1-SNAPSHOT</version>
+	<version>0.4.5-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<developers>
@@ -29,7 +29,7 @@
 	</scm>
 
 	<properties>
-		<net.dontdrinkandroot.wicket.version>0.4.1-SNAPSHOT</net.dontdrinkandroot.wicket.version>
+		<net.dontdrinkandroot.wicket.version>0.4.5-SNAPSHOT</net.dontdrinkandroot.wicket.version>
 		<servlet-api.version>2.5</servlet-api.version>
 	</properties>
 
@@ -101,4 +101,3 @@
 
 	</dependencies>
 </project>
-
