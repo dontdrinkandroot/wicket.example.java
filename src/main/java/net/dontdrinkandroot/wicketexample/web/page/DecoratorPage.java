@@ -13,13 +13,14 @@ import net.dontdrinkandroot.wicket.bootstrap.component.feedback.FencedFeedbackPa
 import net.dontdrinkandroot.wicket.bootstrap.component.item.BookmarkablePageLinkItem;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.DropDownItem;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.AbstractBootstrapPage;
+import net.dontdrinkandroot.wicketexample.web.page.bootstrap.AlertPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.ButtonPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.DropDownPage;
-import net.dontdrinkandroot.wicketexample.web.page.bootstrap.FeedbackPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.FontAwesomeIconPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.FormPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.IconPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.LabelBadgePage;
+import net.dontdrinkandroot.wicketexample.web.page.bootstrap.PanelPage;
 import net.dontdrinkandroot.wicketexample.web.page.component.LifecyclePage;
 import net.dontdrinkandroot.wicketexample.web.page.component.PageHeightScalingPage;
 import net.dontdrinkandroot.wicketexample.web.page.cookie.CookiePage;
@@ -56,7 +57,7 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 
 		this.add(new Label("pageHeading", this.getPageHeadingModel()));
 
-		RepeatingView navItemView = new RepeatingView("navItem");
+		final RepeatingView navItemView = new RepeatingView("navItem");
 		this.createNavItems(navItemView);
 		this.add(navItemView);
 
@@ -93,8 +94,9 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 								FontAwesomeIconPage.class,
 								"Font Awesome Icons"));
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), IconPage.class, "Icons"));
-				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), FeedbackPage.class, "Feedback"));
-				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), DropDownPage.class, "Drop Down"));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), AlertPage.class, "Alerts"));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), DropDownPage.class, "Drop Downs"));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), PanelPage.class, "Panels"));
 				itemView.add(
 						new BookmarkablePageLinkItem(itemView.newChildId(), LabelBadgePage.class, "Labels & Badges"));
 

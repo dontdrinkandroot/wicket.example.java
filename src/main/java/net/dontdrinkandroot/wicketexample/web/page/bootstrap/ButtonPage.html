@@ -10,19 +10,37 @@
 				<div wicket:id="sizes"></div>
 			</div>
 		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">State</h2>
+			</div>
+			<div class="panel-body">
+				<input type="button" wicket:id="disabledInputButton" /> <a href="#"
+					wicket:id="disabledAButton"></a> <input type="submit"
+					wicket:id="disabledSubmitButton" />
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">Button Group</h2>
+			</div>
+			<div class="panel-body">
+				<h3>Single Group</h3>
+				<div wicket:id="singleButtonGroup"></div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">Buttons with Icons</h2>
+			</div>
+			<div class="panel-body">
+				<a wicket:id="iconButton"></a>
+			</div>
+		</div>
 		
-		<h2>State</h2>
-		<input type="button" wicket:id="disabledInputButton" />
-		<a href="#" wicket:id="disabledAButton"></a>
-		<input type="submit" wicket:id="disabledSubmitButton" />
-		
-		<h2>Button Group</h2>
-		
-		<h3>Single Group</h3>
-		<div wicket:id="singleButtonGroup"></div>
-		
-		<h2>Buttons with Icons</h2>
-		<a wicket:id="iconButton"></a>
 	</wicket:extend>
 </body>
 </html>

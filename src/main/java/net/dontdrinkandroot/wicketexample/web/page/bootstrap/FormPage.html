@@ -2,22 +2,36 @@
 <html xmlns:wicket>
 <body>
 	<wicket:extend>
-		<h2>Disabling and Validation</h2>
 		<form wicket:id="validationForm" role="form">
-			<div wicket:id="eMailField"></div>
-			<div wicket:id="requiredField"></div>
-			<div class="form-actions">
-				<input type="submit" wicket:id="submitLink" />
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title">Disabling and Validation</h2>
+				</div>
+				<div class="panel-body">
+					<div wicket:id="eMailField"></div>
+					<div wicket:id="requiredField"></div>
+				</div>
+				<div class="panel-footer">
+					<div class="form-actions">
+						<input type="submit" wicket:id="submitLink" />
+					</div>
+				</div>
 			</div>
 		</form>
 
-		<h2>Horizontal Form</h2>
-		<form wicket:id="horizontalForm">
-			<div wicket:id="textFieldFormGroup"></div>
-			<div wicket:id="textAreaFormGroup"></div>
-			<div wicket:id="checkBoxFormGroup"></div>
-			<div wicket:id="selectFormGroup"></div>
-		</form>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">Horizontal Form</h2>
+			</div>
+			<div class="panel-body">
+				<form wicket:id="horizontalForm">
+					<div wicket:id="textFieldFormGroup"></div>
+					<div wicket:id="textAreaFormGroup"></div>
+					<div wicket:id="checkBoxFormGroup"></div>
+					<div wicket:id="selectFormGroup"></div>
+				</form>
+			</div>
+		</div>
 	</wicket:extend>
 </body>
 </html>
