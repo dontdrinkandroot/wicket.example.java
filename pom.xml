@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.dontdrinkandroot</groupId>
 		<artifactId>parent</artifactId>
-		<version>5</version>
+		<version>6-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>wicket.example</artifactId>
@@ -20,7 +20,7 @@
 	<repositories>
 		<repository>
 			<id>public</id>
-			<url>http://maven.dontdrinkandroot.net/content/groups/public</url>
+			<url>https://maven.dontdrinkandroot.net/content/groups/public</url>
 		</repository>
 	</repositories>
 
