@@ -3,6 +3,7 @@ package net.dontdrinkandroot.wicketexample.web.page.bootstrap;
 import java.util.Arrays;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
@@ -52,10 +53,27 @@ public class FormPage extends AbstractBootstrapPage<Void>
 		final FormGroupTextField<String> eMailField = new FormGroupTextField<String>(
 				formGroupsView.newChildId(),
 				new Model<String>(),
-				new Model<String>("eMail"));
+				new Model<String>("EMail with onBlur"));
 		eMailField.getFormComponent().add(EmailAddressValidator.getInstance());
 		eMailField.getFormComponent().setRequired(true);
 		formGroupsView.add(eMailField);
+
+		AjaxFormComponentUpdatingBehavior onBlurBehavior = new AjaxFormComponentUpdatingBehavior("blur") {
+
+			@Override
+			protected void onUpdate(AjaxRequestTarget target)
+			{
+			}
+
+			@Override
+			protected void onError(AjaxRequestTarget target, RuntimeException e)
+			{
+				if (!this.getFormComponent().isValid()) {
+					target.add(eMailField);
+				}
+			}
+		};
+		eMailField.getFormComponent().add(onBlurBehavior);
 
 		final FormGroupTextField<String> requiredField = new FormGroupTextField<String>(
 				formGroupsView.newChildId(),
@@ -63,10 +81,6 @@ public class FormPage extends AbstractBootstrapPage<Void>
 				new Model<String>("required"));
 		requiredField.getFormComponent().setRequired(true);
 		formGroupsView.add(requiredField);
-
-		final FormGroupTextField<Integer> integerField =
-				new FormGroupTextField<>(formGroupsView.newChildId(), new Model<Integer>(), Model.of("integer"));
-		formGroupsView.add(integerField);
 
 		DisablingSubmitButtonLink<Void> submitLink =
 				new DisablingSubmitButtonLink<Void>("submitLink", null, new Model<String>("Submit")) {
