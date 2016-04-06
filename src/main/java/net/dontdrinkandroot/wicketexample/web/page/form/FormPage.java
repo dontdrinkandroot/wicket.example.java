@@ -14,7 +14,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.time.Duration;
 
 import net.dontdrinkandroot.wicket.bootstrap.component.feedback.FencedFeedbackPanel;
-import net.dontdrinkandroot.wicket.bootstrap.component.form.TextFieldFormGroup;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.FormGroupTextField;
 import net.dontdrinkandroot.wicketexample.web.page.DecoratorWidePage;
 
 
@@ -40,7 +40,7 @@ public class FormPage extends DecoratorWidePage<Void>
 		typeAwareTextFieldForm.add(typeAwareTextFieldFeedbackPanel);
 
 		IModel<String> typeAwareTextFieldModel = Model.of("");
-		final TextFieldFormGroup<String> typeAwareTextField = new TextFieldFormGroup<String>(
+		final FormGroupTextField<String> typeAwareTextField = new FormGroupTextField<String>(
 				"typeAwareTextField",
 				typeAwareTextFieldModel,
 				Model.of("TypeAwareTextField"));
