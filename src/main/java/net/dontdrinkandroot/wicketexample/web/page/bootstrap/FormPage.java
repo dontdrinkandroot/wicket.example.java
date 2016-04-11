@@ -3,7 +3,6 @@ package net.dontdrinkandroot.wicketexample.web.page.bootstrap;
 import java.util.Arrays;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
@@ -12,11 +11,13 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButtonLink;
-import net.dontdrinkandroot.wicket.bootstrap.component.form.FormGroupCheckBox;
-import net.dontdrinkandroot.wicket.bootstrap.component.form.FormGroupSelect;
-import net.dontdrinkandroot.wicket.bootstrap.component.form.FormGroupTextArea;
-import net.dontdrinkandroot.wicket.bootstrap.component.form.FormGroupTextField;
+import net.dontdrinkandroot.wicket.bootstrap.component.button.SubmitButtonLink;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.FormHorizontal;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupCheckBox;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupSelect;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupTextArea;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupTextField;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupUrlTextField;
 import net.dontdrinkandroot.wicket.bootstrap.css.ColumnSize;
 import net.dontdrinkandroot.wicket.bootstrap.css.CombinedColumnSize;
 
@@ -26,26 +27,29 @@ public class FormPage extends AbstractBootstrapPage<Void>
 
 	public FormPage(PageParameters parameters)
 	{
-
 		super(parameters);
 	}
 
 	@Override
 	protected IModel<String> getPageTitleModel()
 	{
-
 		return new Model<String>("Form Demo");
 	}
 
 	@Override
 	protected void onInitialize()
 	{
-
 		super.onInitialize();
 
+		this.add(this.createValidationForm());
+		this.add(this.createFormComponentsForm());
+		this.add(this.createFormComponentsHorizontalForm());
+	}
+
+	private Form<Void> createValidationForm()
+	{
 		Form<Void> validationForm = new Form<Void>("validationForm");
 		validationForm.setOutputMarkupId(true);
-		this.add(validationForm);
 
 		RepeatingView formGroupsView = new RepeatingView("formGroup");
 		validationForm.add(formGroupsView);
@@ -56,24 +60,8 @@ public class FormPage extends AbstractBootstrapPage<Void>
 				new Model<String>("EMail with onBlur"));
 		eMailField.getFormComponent().add(EmailAddressValidator.getInstance());
 		eMailField.getFormComponent().setRequired(true);
+		eMailField.setOnBlurValidation(true);
 		formGroupsView.add(eMailField);
-
-		AjaxFormComponentUpdatingBehavior onBlurBehavior = new AjaxFormComponentUpdatingBehavior("blur") {
-
-			@Override
-			protected void onUpdate(AjaxRequestTarget target)
-			{
-			}
-
-			@Override
-			protected void onError(AjaxRequestTarget target, RuntimeException e)
-			{
-				if (!this.getFormComponent().isValid()) {
-					target.add(eMailField);
-				}
-			}
-		};
-		eMailField.getFormComponent().add(onBlurBehavior);
 
 		final FormGroupTextField<String> requiredField = new FormGroupTextField<String>(
 				formGroupsView.newChildId(),
@@ -108,7 +96,6 @@ public class FormPage extends AbstractBootstrapPage<Void>
 					@Override
 					protected void onError(AjaxRequestTarget target, Form<?> form)
 					{
-
 						try {
 							Thread.sleep(1000L);
 						} catch (InterruptedException e) {
@@ -119,35 +106,56 @@ public class FormPage extends AbstractBootstrapPage<Void>
 				};
 		validationForm.add(submitLink);
 
+		return validationForm;
+	}
+
+	private Form<Void> createFormComponentsForm()
+	{
+		Form<Void> form = new Form<Void>("formComponentsForm");
+		this.createFormComponents(form);
+
+		form.add(new SubmitButtonLink<Void>("submitButton", null, Model.of("Submit")));
+
+		return form;
+	}
+
+	private Form<Void> createFormComponentsHorizontalForm()
+	{
 		CombinedColumnSize labelSize = new CombinedColumnSize(ColumnSize.MD_3);
 		CombinedColumnSize formComponentSize = new CombinedColumnSize(ColumnSize.MD_9);
 
-		Form<Void> horizontalForm = new FormHorizontal<Void>("horizontalForm", labelSize, formComponentSize);
-		this.add(horizontalForm);
-		this.createFormComponents(horizontalForm);
+		Form<Void> form = new FormHorizontal<Void>("formComponentsHorizontalForm", labelSize, formComponentSize);
+		this.createFormComponents(form);
+
+		form.add(new SubmitButtonLink<Void>("submitButton", null, Model.of("Submit")));
+
+		return form;
 	}
 
 	private void createFormComponents(Form<Void> form)
 	{
+		RepeatingView formGroupView = new RepeatingView("formGroup");
+		form.add(formGroupView);
 
 		FormGroupTextField<String> textFieldFormGroup =
-				new FormGroupTextField<String>("textFieldFormGroup", new Model<String>(), Model.of("Text Field"));
-		form.add(textFieldFormGroup);
+				new FormGroupTextField<String>(formGroupView.newChildId(), new Model<String>(), Model.of("Text Field"));
+		formGroupView.add(textFieldFormGroup);
+
+		formGroupView.add(new FormGroupUrlTextField(formGroupView.newChildId(), new Model<String>(), Model.of("URL")));
 
 		FormGroupTextArea<String> textAreaFormGroup =
-				new FormGroupTextArea<String>("textAreaFormGroup", new Model<String>(), Model.of("Text Area"));
-		form.add(textAreaFormGroup);
+				new FormGroupTextArea<String>(formGroupView.newChildId(), new Model<String>(), Model.of("Text Area"));
+		formGroupView.add(textAreaFormGroup);
 
 		FormGroupCheckBox checkBoxFormGroup =
-				new FormGroupCheckBox("checkBoxFormGroup", new Model<Boolean>(), Model.of("Check Box"));
-		form.add(checkBoxFormGroup);
+				new FormGroupCheckBox(formGroupView.newChildId(), new Model<Boolean>(), Model.of("Check Box"));
+		formGroupView.add(checkBoxFormGroup);
 
 		FormGroupSelect<Integer> selectFormGroup = new FormGroupSelect<Integer>(
-				"selectFormGroup",
+				formGroupView.newChildId(),
 				new Model<Integer>(2),
 				Model.of("Select"),
 				Arrays.asList(new Integer[] { 1, 2, 3, 4, 5 }));
-		form.add(selectFormGroup);
-
+		formGroupView.add(selectFormGroup);
 	}
 }
