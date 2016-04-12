@@ -34,8 +34,8 @@ public class DropDownPage extends AbstractBootstrapPage<Void> {
 				itemView.add(new HeaderItem(itemView.newChildId(), Model.of("Header")));
 				itemView.add(new BookmarkablePageLinkItem(
 						itemView.newChildId(),
-						DropDownPage.class,
-						Model.of("Link Item")));
+						Model.of("Link Item"),
+						DropDownPage.class));
 				itemView.add(new DividerItem(itemView.newChildId()));
 				itemView.add(new SubMenuItem(itemView.newChildId(), Model.of("SubMenu")) {
 

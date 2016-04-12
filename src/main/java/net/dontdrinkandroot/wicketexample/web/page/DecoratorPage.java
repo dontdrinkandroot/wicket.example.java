@@ -86,29 +86,29 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 			@Override
 			protected void createDropDownItems(RepeatingView itemView)
 			{
-				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), ButtonPage.class, "Buttons"));
-				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), FormPage.class, "Forms"));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Buttons", ButtonPage.class));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Forms", FormPage.class));
 				itemView.add(
 						new BookmarkablePageLinkItem(
 								itemView.newChildId(),
-								FontAwesomeIconPage.class,
-								"Font Awesome Icons"));
-				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), IconPage.class, "Icons"));
-				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), AlertPage.class, "Alerts"));
-				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), DropDownPage.class, "Drop Downs"));
-				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), PanelPage.class, "Panels"));
+								"Font Awesome Icons",
+								FontAwesomeIconPage.class));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Icons", IconPage.class));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Alerts", AlertPage.class));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Drop Downs", DropDownPage.class));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Panels", PanelPage.class));
 				itemView.add(
-						new BookmarkablePageLinkItem(itemView.newChildId(), LabelBadgePage.class, "Labels & Badges"));
+						new BookmarkablePageLinkItem(itemView.newChildId(), "Labels & Badges", LabelBadgePage.class));
 
 			}
 		});
-		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), ResourcesPage.class, "Resources"));
+		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), "Resources", ResourcesPage.class));
 		navItemView.add(
 				new BookmarkablePageLinkItem(
 						navItemView.newChildId(),
-						net.dontdrinkandroot.wicketexample.web.page.form.FormPage.class,
-						"Forms"));
-		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), CallbackPage.class, "JavaScript") {
+						"Forms",
+						net.dontdrinkandroot.wicketexample.web.page.form.FormPage.class));
+		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), "JavaScript", CallbackPage.class) {
 
 			@Override
 			protected boolean isActive()
@@ -124,14 +124,14 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 				itemView.add(
 						new BookmarkablePageLinkItem(
 								itemView.newChildId(),
-								PageHeightScalingPage.class,
-								"PageHeight Scaling"));
-				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), LifecyclePage.class, "Lifecycle"));
+								"PageHeight Scaling",
+								PageHeightScalingPage.class));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Lifecycle", LifecyclePage.class));
 			}
 		});
 
-		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), CookiePage.class, "Cookies"));
-		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), EventPage.class, "Events"));
+		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), "Cookies", CookiePage.class));
+		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), "Events", EventPage.class));
 	}
 
 	@Override
