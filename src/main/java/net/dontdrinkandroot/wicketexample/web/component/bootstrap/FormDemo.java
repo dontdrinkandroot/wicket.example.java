@@ -1,16 +1,18 @@
 package net.dontdrinkandroot.wicketexample.web.component.bootstrap;
 
-import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButtonLink;
-import net.dontdrinkandroot.wicket.bootstrap.css.ButtonStyle;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 
+import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButtonLink;
+import net.dontdrinkandroot.wicket.bootstrap.css.ButtonStyle;
 
-public class FormDemo extends GenericPanel<Void> {
 
-	public FormDemo(String id) {
+public class FormDemo extends GenericPanel<Void>
+{
+
+	public FormDemo(String id)
+	{
 
 		super(id);
 
@@ -18,10 +20,11 @@ public class FormDemo extends GenericPanel<Void> {
 		disablingSubmitForm.setOutputMarkupId(true);
 		this.add(disablingSubmitForm);
 
-		DisablingSubmitButtonLink<Void> submitLink = new DisablingSubmitButtonLink<Void>("submitLink") {
+		DisablingSubmitButtonLink submitLink = new DisablingSubmitButtonLink("submitLink") {
 
 			@Override
-			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+			protected void onSubmit(AjaxRequestTarget target, Form<?> form)
+			{
 
 				try {
 					Thread.sleep(2000L);
@@ -32,7 +35,7 @@ public class FormDemo extends GenericPanel<Void> {
 			}
 
 		};
-		submitLink.setButtonStyle(ButtonStyle.PRIMARY);
+		submitLink.getButtonBehavior().setButtonStyle(ButtonStyle.PRIMARY);
 		disablingSubmitForm.add(submitLink);
 	}
 }

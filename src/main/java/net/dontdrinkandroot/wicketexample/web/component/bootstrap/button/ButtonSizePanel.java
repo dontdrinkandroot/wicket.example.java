@@ -1,58 +1,63 @@
 package net.dontdrinkandroot.wicketexample.web.component.bootstrap.button;
 
-import net.dontdrinkandroot.wicket.bootstrap.component.button.ButtonLink;
+import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.model.Model;
+
+import net.dontdrinkandroot.wicket.bootstrap.behavior.ButtonBehavior;
 import net.dontdrinkandroot.wicket.bootstrap.component.panel.SimplePanel;
 import net.dontdrinkandroot.wicket.bootstrap.css.ButtonSize;
 import net.dontdrinkandroot.wicket.component.basic.Heading;
 
-import org.apache.wicket.model.Model;
 
+public class ButtonSizePanel extends SimplePanel<Void>
+{
 
-public class ButtonSizePanel extends SimplePanel<Void> {
-
-	public ButtonSizePanel(String id) {
-
+	public ButtonSizePanel(String id)
+	{
 		super(id, Model.of("Sizes"), Heading.Level.H2);
 	}
 
-
 	@Override
-	protected void onInitialize() {
-
+	protected void onInitialize()
+	{
 		super.onInitialize();
 
-		this.add(new ButtonLink<Void>("extraSmallButton", null, new Model<String>("extraSmallButton")) {
+		this.add(new Link<Void>("extraSmallButton", null) {
 
 			@Override
-			public void onClick() {
-
+			public void onClick()
+			{
 				/* Noop */
 			}
-		}.setButtonSize(ButtonSize.EXTRA_SMALL));
-		this.add(new ButtonLink<Void>("smallButton", null, new Model<String>("smallButton")) {
+		}.setBody(new Model<String>("extraSmallButton")).add(
+				new ButtonBehavior().setButtonSize(ButtonSize.EXTRA_SMALL)));
+
+		this.add(new Link<Void>("smallButton", null) {
 
 			@Override
-			public void onClick() {
-
+			public void onClick()
+			{
 				/* Noop */
 			}
-		}.setButtonSize(ButtonSize.SMALL));
-		this.add(new ButtonLink<Void>("normalButton", null, new Model<String>("normalButton")) {
+		}.setBody(new Model<String>("smallButton")).add(new ButtonBehavior().setButtonSize(ButtonSize.SMALL)));
+
+		this.add(new Link<Void>("normalButton", null) {
 
 			@Override
-			public void onClick() {
-
+			public void onClick()
+			{
 				/* Noop */
 			}
-		});
-		this.add(new ButtonLink<Void>("largeButton", null, new Model<String>("largeButton")) {
+		}.setBody(new Model<String>("normalButton")).add(new ButtonBehavior()));
+
+		this.add(new Link<Void>("largeButton", null) {
 
 			@Override
-			public void onClick() {
-
+			public void onClick()
+			{
 				/* Noop */
 			}
-		}.setButtonSize(ButtonSize.LARGE));
+		}.setBody(new Model<String>("largeButton")).add(new ButtonBehavior().setButtonSize(ButtonSize.LARGE)));
 	}
 
 }

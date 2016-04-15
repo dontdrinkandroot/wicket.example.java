@@ -1,83 +1,90 @@
 package net.dontdrinkandroot.wicketexample.web.component.bootstrap.button;
 
+import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.model.Model;
+
+import net.dontdrinkandroot.wicket.bootstrap.behavior.ButtonBehavior;
 import net.dontdrinkandroot.wicket.bootstrap.behavior.ButtonBlockLevelBehavior;
-import net.dontdrinkandroot.wicket.bootstrap.component.button.ButtonLink;
 import net.dontdrinkandroot.wicket.bootstrap.component.panel.SimplePanel;
 import net.dontdrinkandroot.wicket.bootstrap.css.ButtonStyle;
 import net.dontdrinkandroot.wicket.component.basic.Heading;
 
-import org.apache.wicket.model.Model;
 
+public class ButtonStylePanel extends SimplePanel<Void>
+{
 
-public class ButtonStylePanel extends SimplePanel<Void> {
-
-	public ButtonStylePanel(String id) {
-
+	public ButtonStylePanel(String id)
+	{
 		super(id, Model.of("Styles"), Heading.Level.H2);
 	}
 
-
 	@Override
-	protected void onInitialize() {
-
+	protected void onInitialize()
+	{
 		super.onInitialize();
 
-		this.add(new ButtonLink<Void>("defaultButton", null, new Model<String>("defaultButton")) {
+		this.add(new Link<Void>("defaultButton", null) {
 
 			@Override
-			public void onClick() {
-
+			public void onClick()
+			{
 				this.debug("defaultButton Clicked");
 			}
-		}.add(new ButtonBlockLevelBehavior()));
-		this.add(new ButtonLink<Void>("primaryButton", null, new Model<String>("primaryButton")) {
+		}.setBody(new Model<String>("defaultButton")).add(new ButtonBehavior()).add(new ButtonBlockLevelBehavior()));
+		this.add(new Link<Void>("primaryButton", null) {
 
 			@Override
-			public void onClick() {
-
+			public void onClick()
+			{
 				this.debug("primaryButton Clicked");
 			}
-		}.setButtonStyle(ButtonStyle.PRIMARY).add(new ButtonBlockLevelBehavior()));
-		this.add(new ButtonLink<Void>("infoButton", null, new Model<String>("infoButton")) {
+		}.setBody(new Model<String>("primaryButton")).add(new ButtonBehavior().setButtonStyle(ButtonStyle.PRIMARY)).add(
+				new ButtonBlockLevelBehavior()));
+		this.add(new Link<Void>("infoButton", null) {
 
 			@Override
-			public void onClick() {
-
+			public void onClick()
+			{
 				this.info("infoButton Clicked");
 			}
-		}.setButtonStyle(ButtonStyle.INFO).add(new ButtonBlockLevelBehavior()));
-		this.add(new ButtonLink<Void>("successButton", null, new Model<String>("successButton")) {
+		}.setBody(new Model<String>("infoButton")).add(new ButtonBehavior().setButtonStyle(ButtonStyle.INFO)).add(
+				new ButtonBlockLevelBehavior()));
+		this.add(new Link<Void>("successButton", null) {
 
 			@Override
-			public void onClick() {
-
+			public void onClick()
+			{
 				this.success("successButton Clicked");
 			}
-		}.setButtonStyle(ButtonStyle.SUCCESS).add(new ButtonBlockLevelBehavior()));
-		this.add(new ButtonLink<Void>("warningButton", null, new Model<String>("warningButton")) {
+		}.setBody(new Model<String>("successButton")).add(new ButtonBehavior().setButtonStyle(ButtonStyle.SUCCESS)).add(
+				new ButtonBlockLevelBehavior()));
+		this.add(new Link<Void>("warningButton", null) {
 
 			@Override
-			public void onClick() {
-
+			public void onClick()
+			{
 				this.success("warningButton Clicked");
 			}
-		}.setButtonStyle(ButtonStyle.WARNING).add(new ButtonBlockLevelBehavior()));
-		this.add(new ButtonLink<Void>("dangerButton", null, new Model<String>("dangerButton")) {
+		}.setBody(new Model<String>("warningButton")).add(new ButtonBehavior().setButtonStyle(ButtonStyle.WARNING)).add(
+				new ButtonBlockLevelBehavior()));
+		this.add(new Link<Void>("dangerButton", null) {
 
 			@Override
-			public void onClick() {
-
+			public void onClick()
+			{
 				this.debug("dangerButton Clicked");
 			}
-		}.setButtonStyle(ButtonStyle.DANGER).add(new ButtonBlockLevelBehavior()));
-		this.add(new ButtonLink<Void>("linkButton", null, new Model<String>("linkButton")) {
+		}.setBody(new Model<String>("dangerButton")).add(new ButtonBehavior().setButtonStyle(ButtonStyle.DANGER)).add(
+				new ButtonBlockLevelBehavior()));
+		this.add(new Link<Void>("linkButton", null) {
 
 			@Override
-			public void onClick() {
-
+			public void onClick()
+			{
 				this.debug("linkButton Clicked");
 			}
-		}.setButtonStyle(ButtonStyle.LINK).add(new ButtonBlockLevelBehavior()));
+		}.setBody(new Model<String>("linkButton")).add(new ButtonBehavior().setButtonStyle(ButtonStyle.LINK)).add(
+				new ButtonBlockLevelBehavior()));
 	}
 
 }

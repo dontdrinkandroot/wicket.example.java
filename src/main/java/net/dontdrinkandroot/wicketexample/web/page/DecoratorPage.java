@@ -19,7 +19,7 @@ import net.dontdrinkandroot.wicketexample.web.page.bootstrap.DropDownPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.FontAwesomeIconPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.FormPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.IconPage;
-import net.dontdrinkandroot.wicketexample.web.page.bootstrap.LabelBadgePage;
+import net.dontdrinkandroot.wicketexample.web.page.bootstrap.LabelPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.PanelPage;
 import net.dontdrinkandroot.wicketexample.web.page.component.LifecyclePage;
 import net.dontdrinkandroot.wicketexample.web.page.component.PageHeightScalingPage;
@@ -98,7 +98,7 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Drop Downs", DropDownPage.class));
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Panels", PanelPage.class));
 				itemView.add(
-						new BookmarkablePageLinkItem(itemView.newChildId(), "Labels & Badges", LabelBadgePage.class));
+						new BookmarkablePageLinkItem(itemView.newChildId(), "Labels & Badges", LabelPage.class));
 
 			}
 		});
