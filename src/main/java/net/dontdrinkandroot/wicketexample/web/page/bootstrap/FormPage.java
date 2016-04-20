@@ -67,6 +67,7 @@ public class FormPage extends AbstractBootstrapPage<Void>
 		eMailField.getFormComponent().add(EmailAddressValidator.getInstance());
 		eMailField.getFormComponent().setRequired(true);
 		eMailField.addOnlineValidation("blur");
+		eMailField.setHelpTextModel(Model.of("This is a static help text"));
 		formGroupsView.add(eMailField);
 
 		final FormGroupTextField<String> onInputValidationField = new FormGroupTextField<String>(
