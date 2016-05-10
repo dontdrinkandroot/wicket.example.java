@@ -18,7 +18,7 @@ import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 import net.dontdrinkandroot.wicket.bootstrap.behavior.ButtonBehavior;
 import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButtonLink;
-import net.dontdrinkandroot.wicket.bootstrap.component.form.FormHorizontal;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.BootstrapForm;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupCheckBox;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupSelect;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupTextArea;
@@ -147,7 +147,8 @@ public class FormPage extends AbstractBootstrapPage<Void>
 		CombinedColumnSize labelSize = new CombinedColumnSize(ColumnSize.MD_3);
 		CombinedColumnSize formComponentSize = new CombinedColumnSize(ColumnSize.MD_9);
 
-		Form<Void> form = new FormHorizontal<Void>("formComponentsHorizontalForm", labelSize, formComponentSize);
+		Form<Void> form =
+				new BootstrapForm<Void>("formComponentsHorizontalForm").setHorizontal(labelSize, formComponentSize);
 		this.createFormComponents(form);
 
 		form.add(new SubmitLink("submitButton").setBody(Model.of("Submit")).add(new ButtonBehavior()));
