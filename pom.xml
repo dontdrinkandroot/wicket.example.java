@@ -98,6 +98,13 @@
 			<version>${servlet-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<dependency>
+    		<groupId>com.esotericsoftware.yamlbeans</groupId>
+    		<artifactId>yamlbeans</artifactId>
+    		<version>1.09</version>
+    		<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 </project>
