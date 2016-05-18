@@ -1,5 +1,7 @@
 package net.dontdrinkandroot.wicketexample.web.page.form;
 
+import java.util.Date;
+
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxCallListener;
@@ -14,6 +16,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.time.Duration;
 
 import net.dontdrinkandroot.wicket.bootstrap.component.feedback.FencedFeedbackPanel;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.DateTimePicker;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupTextField;
 import net.dontdrinkandroot.wicketexample.web.page.DecoratorWidePage;
 
@@ -89,6 +92,9 @@ public class FormPage extends DecoratorWidePage<Void>
 
 		typeAwareTextField.getFormComponent().add(preventEnterBehavior);
 		typeAwareTextField.getFormComponent().add(typeAwareBehavior);
+
+		DateTimePicker dateTimePicker = new DateTimePicker("date", new Model<Date>(new Date()), 2002, 2010);
+		this.add(dateTimePicker);
 	}
 
 }
