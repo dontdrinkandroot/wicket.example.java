@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +28,7 @@ public class FontAwesomeEnumGenerator
 			@SuppressWarnings("unchecked")
 			List<Object> iconList = (List<Object>) yamlReader.read(Map.class).get("icons");
 
-			iconList.sort(new Comparator<Object>() {
+			Collections.sort(iconList, new Comparator<Object>() {
 
 				@Override
 				public int compare(Object o1, Object o2)

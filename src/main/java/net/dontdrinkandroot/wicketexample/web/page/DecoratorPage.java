@@ -21,6 +21,7 @@ import net.dontdrinkandroot.wicketexample.web.page.bootstrap.FormPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.IconPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.LabelPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.PanelPage;
+import net.dontdrinkandroot.wicketexample.web.page.component.CalendarPage;
 import net.dontdrinkandroot.wicketexample.web.page.component.LifecyclePage;
 import net.dontdrinkandroot.wicketexample.web.page.component.PageHeightScalingPage;
 import net.dontdrinkandroot.wicketexample.web.page.cookie.CookiePage;
@@ -97,11 +98,12 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Alerts", AlertPage.class));
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Drop Downs", DropDownPage.class));
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Panels", PanelPage.class));
-				itemView.add(
-						new BookmarkablePageLinkItem(itemView.newChildId(), "Labels & Badges", LabelPage.class));
+				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Labels & Badges", LabelPage.class));
 
 			}
 		});
+		navItemView.add(
+				new BookmarkablePageLinkItem(navItemView.newChildId(), Model.of("Calendar"), CalendarPage.class));
 		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), "Resources", ResourcesPage.class));
 		navItemView.add(
 				new BookmarkablePageLinkItem(
