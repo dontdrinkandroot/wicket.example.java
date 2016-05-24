@@ -1,6 +1,9 @@
 package net.dontdrinkandroot.wicketexample.web.page.bootstrap;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.ThrottlingSettings;
@@ -19,6 +22,7 @@ import org.apache.wicket.validation.validator.EmailAddressValidator;
 import net.dontdrinkandroot.wicket.bootstrap.behavior.ButtonBehavior;
 import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButtonLink;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.BootstrapForm;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupAutoComplete;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupCheckBox;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupSelect;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupTextArea;
@@ -181,5 +185,35 @@ public class FormPage extends AbstractBootstrapPage<Void>
 				Model.of("Select"),
 				Arrays.asList(new Integer[] { 1, 2, 3, 4, 5 }));
 		formGroupView.add(selectFormGroup);
+
+		final List<String> countryNames = new ArrayList<String>();
+		String[] countryCodes = Locale.getISOCountries();
+		for (String countryCode : countryCodes) {
+			countryNames.add(new Locale("", countryCode).getDisplayCountry(this.getLocale()));
+		}
+
+		FormGroupAutoComplete autoComplete =
+				new FormGroupAutoComplete("autoComplete", new Model<String>(), Model.of("Countries")) {
+
+					@Override
+					protected List<String> getChoices(String selection)
+					{
+						if ((null == selection) || ("" == selection)) {
+							return countryNames;
+						}
+
+						List<String> filteredCountries = new ArrayList<String>();
+						for (String countryName : countryNames) {
+							if (countryName.toLowerCase().contains(selection.toLowerCase())) {
+								filteredCountries.add(countryName);
+							}
+						}
+
+						return filteredCountries;
+					}
+
+				};
+		formGroupView.add(autoComplete);
 	}
+
 }
