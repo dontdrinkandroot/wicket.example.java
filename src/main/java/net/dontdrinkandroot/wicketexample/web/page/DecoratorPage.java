@@ -22,6 +22,7 @@ import net.dontdrinkandroot.wicketexample.web.page.bootstrap.IconPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.LabelPage;
 import net.dontdrinkandroot.wicketexample.web.page.bootstrap.PanelPage;
 import net.dontdrinkandroot.wicketexample.web.page.component.CalendarPage;
+import net.dontdrinkandroot.wicketexample.web.page.component.FragmentBorderPage;
 import net.dontdrinkandroot.wicketexample.web.page.component.LifecyclePage;
 import net.dontdrinkandroot.wicketexample.web.page.component.PageHeightScalingPage;
 import net.dontdrinkandroot.wicketexample.web.page.cookie.CookiePage;
@@ -129,6 +130,11 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 								"PageHeight Scaling",
 								PageHeightScalingPage.class));
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Lifecycle", LifecyclePage.class));
+				itemView.add(
+						new BookmarkablePageLinkItem(
+								itemView.newChildId(),
+								Model.of("Border and Fragment"),
+								FragmentBorderPage.class));
 			}
 		});
 
