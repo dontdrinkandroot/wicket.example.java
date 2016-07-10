@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 	version="2.4">
 
-	<display-name>wicketexample</display-name>
+	<display-name>wicket.test</display-name>
 
 	<filter>
 		<filter-name>wicket.wickettest</filter-name>

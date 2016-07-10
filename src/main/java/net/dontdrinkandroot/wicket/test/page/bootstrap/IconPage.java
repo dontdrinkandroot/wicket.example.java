@@ -1,9 +1,5 @@
 package net.dontdrinkandroot.wicket.test.page.bootstrap;
 
-import net.dontdrinkandroot.wicket.behavior.CssClassAppender;
-import net.dontdrinkandroot.wicket.bootstrap.css.GlyphIconClass;
-import net.dontdrinkandroot.wicket.css.CssClass;
-
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.repeater.RepeatingView;
@@ -11,10 +7,16 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+import net.dontdrinkandroot.wicket.behavior.CssClassAppender;
+import net.dontdrinkandroot.wicket.bootstrap.css.GlyphIconClass;
+import net.dontdrinkandroot.wicket.css.CssClass;
 
-public class IconPage extends AbstractBootstrapPage<Void> {
 
-	public IconPage(PageParameters parameters) {
+public class IconPage extends AbstractBootstrapPage<Void>
+{
+
+	public IconPage(PageParameters parameters)
+	{
 
 		super(parameters);
 
@@ -35,9 +37,9 @@ public class IconPage extends AbstractBootstrapPage<Void> {
 		}
 	}
 
-
 	@Override
-	protected IModel<String> getPageTitleModel() {
+	protected IModel<String> createPageHeadingModel()
+	{
 
 		return new Model<String>("Icon Demo");
 	}

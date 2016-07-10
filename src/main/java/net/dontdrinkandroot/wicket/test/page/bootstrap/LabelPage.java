@@ -34,7 +34,7 @@ public class LabelPage extends AbstractBootstrapPage<Void>
 	}
 
 	@Override
-	protected IModel<String> getPageTitleModel()
+	protected IModel<String> createPageHeadingModel()
 	{
 
 		return new Model<String>("Label Demo");

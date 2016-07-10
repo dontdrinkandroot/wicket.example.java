@@ -137,7 +137,7 @@ public class ButtonPage extends AbstractBootstrapPage<Void>
 	}
 
 	@Override
-	protected IModel<String> getPageTitleModel()
+	protected IModel<String> createPageHeadingModel()
 	{
 		return new Model<String>("Button Demo");
 	}

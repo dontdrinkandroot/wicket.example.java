@@ -32,7 +32,7 @@ import net.dontdrinkandroot.wicket.test.page.javascript.CallbackPage;
 import net.dontdrinkandroot.wicket.test.page.resources.ResourcesPage;
 
 
-public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.bootstrap.page.AbstractBootstrapPage<T>
+public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.bootstrap.page.BootstrapPage<T>
 {
 
 	private FeedbackPanel feedbackPanel;
@@ -57,7 +57,7 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 		this.feedbackPanel.setOutputMarkupId(true);
 		this.add(this.feedbackPanel);
 
-		this.add(new Label("pageHeading", this.getPageHeadingModel()));
+		this.add(new Label("pageHeading", this.pageHeadingModel));
 
 		final RepeatingView navItemView = new RepeatingView("navItem");
 		this.createNavItems(navItemView);
@@ -150,20 +150,15 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 		response.render(CssHeaderItem.forCSS("body {padding-top: 60px}", "bodyPadding"));
 	}
 
-	protected IModel<String> getPageHeadingModel()
+	@Override
+	protected IModel<String> createPageHeadingModel()
 	{
-		return this.getPageTitleModel();
+		return new Model<String>(this.getClass().getSimpleName());
 	}
 
 	protected FeedbackPanel getFeedbackPanel()
 	{
 		return this.feedbackPanel;
-	}
-
-	@Override
-	protected IModel<String> getPageTitleModel()
-	{
-		return new Model<String>(this.getClass().getSimpleName());
 	}
 
 }

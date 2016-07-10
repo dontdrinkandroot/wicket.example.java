@@ -5,16 +5,18 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 
-public class ProgressPage extends AbstractBootstrapPage<Void> {
+public class ProgressPage extends AbstractBootstrapPage<Void>
+{
 
-	public ProgressPage(PageParameters parameters) {
+	public ProgressPage(PageParameters parameters)
+	{
 
 		super(parameters);
 	}
 
-
 	@Override
-	protected IModel<String> getPageTitleModel() {
+	protected IModel<String> createPageHeadingModel()
+	{
 
 		return new Model<String>("Progress Bar Demo");
 	}

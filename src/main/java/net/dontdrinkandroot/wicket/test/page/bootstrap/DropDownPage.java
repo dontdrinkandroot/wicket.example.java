@@ -54,7 +54,7 @@ public class DropDownPage extends AbstractBootstrapPage<Void>
 	}
 
 	@Override
-	protected IModel<String> getPageTitleModel()
+	protected IModel<String> createPageHeadingModel()
 	{
 
 		return new Model<String>("DropDown Demo");

@@ -41,7 +41,7 @@ public class FormPage extends AbstractBootstrapPage<Void>
 	}
 
 	@Override
-	protected IModel<String> getPageTitleModel()
+	protected IModel<String> createPageHeadingModel()
 	{
 		return new Model<String>("Form Demo");
 	}
@@ -198,7 +198,7 @@ public class FormPage extends AbstractBootstrapPage<Void>
 					@Override
 					protected List<String> getChoices(String selection)
 					{
-						if ((null == selection) || ("" == selection)) {
+						if (null == selection || "" == selection) {
 							return countryNames;
 						}
 
