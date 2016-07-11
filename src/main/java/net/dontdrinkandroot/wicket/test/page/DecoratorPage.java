@@ -19,7 +19,6 @@ import net.dontdrinkandroot.wicket.test.page.bootstrap.DropDownPage;
 import net.dontdrinkandroot.wicket.test.page.bootstrap.FontAwesomeIconPage;
 import net.dontdrinkandroot.wicket.test.page.bootstrap.FormPage;
 import net.dontdrinkandroot.wicket.test.page.bootstrap.IconPage;
-import net.dontdrinkandroot.wicket.test.page.bootstrap.LabelPage;
 import net.dontdrinkandroot.wicket.test.page.bootstrap.PanelPage;
 import net.dontdrinkandroot.wicket.test.page.component.CalendarPage;
 import net.dontdrinkandroot.wicket.test.page.component.FragmentBorderPage;
@@ -86,7 +85,7 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 			}
 
 			@Override
-			protected void createDropDownItems(RepeatingView itemView)
+			protected void populateItems(RepeatingView itemView)
 			{
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Buttons", ButtonPage.class));
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Forms", FormPage.class));
@@ -99,7 +98,6 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Alerts", AlertPage.class));
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Drop Downs", DropDownPage.class));
 				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Panels", PanelPage.class));
-				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Labels & Badges", LabelPage.class));
 
 			}
 		});
@@ -122,7 +120,7 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 		navItemView.add(new DropDownItem(navItemView.newChildId(), "Components") {
 
 			@Override
-			protected void createDropDownItems(RepeatingView itemView)
+			protected void populateItems(RepeatingView itemView)
 			{
 				itemView.add(
 						new BookmarkablePageLinkItem(

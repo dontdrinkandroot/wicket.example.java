@@ -9,8 +9,6 @@ import net.dontdrinkandroot.wicket.bootstrap.component.dropdown.DropDownMenu;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.BookmarkablePageLinkItem;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.DividerItem;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.HeaderItem;
-import net.dontdrinkandroot.wicket.bootstrap.component.item.LabelItem;
-import net.dontdrinkandroot.wicket.bootstrap.component.item.SubMenuItem;
 
 
 public class DropDownPage extends AbstractBootstrapPage<Void>
@@ -38,16 +36,6 @@ public class DropDownPage extends AbstractBootstrapPage<Void>
 				itemView.add(
 						new BookmarkablePageLinkItem(itemView.newChildId(), Model.of("Link Item"), DropDownPage.class));
 				itemView.add(new DividerItem(itemView.newChildId()));
-				itemView.add(new SubMenuItem(itemView.newChildId(), Model.of("SubMenu")) {
-
-					@Override
-					protected void populateItems(RepeatingView itemView)
-					{
-
-						itemView.add(new LabelItem(itemView.newChildId(), Model.of("Label Item 1")));
-						itemView.add(new LabelItem(itemView.newChildId(), Model.of("Label Item 2")));
-					}
-				});
 			}
 		};
 		this.add(allItemsMenu);
