@@ -45,8 +45,8 @@ public class FormPage extends DecoratorWidePage<Void>
 		IModel<String> typeAwareTextFieldModel = Model.of("");
 		final FormGroupTextField<String> typeAwareTextField = new FormGroupTextField<String>(
 				"typeAwareTextField",
-				typeAwareTextFieldModel,
-				Model.of("TypeAwareTextField"));
+				Model.of("TypeAwareTextField"),
+				typeAwareTextFieldModel);
 		typeAwareTextFieldForm.add(typeAwareTextField);
 
 		AjaxEventBehavior typeAwareBehavior = new AjaxFormComponentUpdatingBehavior("input") {

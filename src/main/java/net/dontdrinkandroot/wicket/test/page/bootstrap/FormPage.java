@@ -66,8 +66,8 @@ public class FormPage extends AbstractBootstrapPage<Void>
 
 		final FormGroupTextField<String> eMailField = new FormGroupTextField<String>(
 				formGroupsView.newChildId(),
-				new Model<String>(),
-				new Model<String>("EMail with onBlur"));
+				new Model<String>("EMail with onBlur"),
+				new Model<String>());
 		eMailField.getFormComponent().add(EmailAddressValidator.getInstance());
 		eMailField.getFormComponent().setRequired(true);
 		eMailField.addOnlineValidation("blur");
@@ -76,8 +76,8 @@ public class FormPage extends AbstractBootstrapPage<Void>
 
 		final FormGroupTextField<String> onInputValidationField = new FormGroupTextField<String>(
 				formGroupsView.newChildId(),
-				new Model<String>("Type.."),
-				new Model<String>("On Input Validation"));
+				new Model<String>("On Input Validation"),
+				new Model<String>("Type.."));
 		onInputValidationField.getFormComponent().add(new IValidator<String>() {
 
 			@Override
@@ -93,8 +93,8 @@ public class FormPage extends AbstractBootstrapPage<Void>
 
 		final FormGroupTextField<String> requiredField = new FormGroupTextField<String>(
 				formGroupsView.newChildId(),
-				new Model<String>(),
-				new Model<String>("required"));
+				new Model<String>("required"),
+				new Model<String>());
 		requiredField.getFormComponent().setRequired(true);
 		formGroupsView.add(requiredField);
 
@@ -166,7 +166,7 @@ public class FormPage extends AbstractBootstrapPage<Void>
 		form.add(formGroupView);
 
 		FormGroupTextField<String> textFieldFormGroup =
-				new FormGroupTextField<String>(formGroupView.newChildId(), new Model<String>(), Model.of("Text Field"));
+				new FormGroupTextField<String>(formGroupView.newChildId(), Model.of("Text Field"), new Model<String>());
 		formGroupView.add(textFieldFormGroup);
 
 		formGroupView.add(new FormGroupUrlTextField(formGroupView.newChildId(), new Model<String>(), Model.of("URL")));
