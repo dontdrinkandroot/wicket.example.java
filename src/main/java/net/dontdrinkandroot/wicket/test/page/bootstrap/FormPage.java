@@ -172,7 +172,7 @@ public class FormPage extends AbstractBootstrapPage<Void>
 		formGroupView.add(new FormGroupUrlTextField(formGroupView.newChildId(), new Model<String>(), Model.of("URL")));
 
 		FormGroupTextArea<String> textAreaFormGroup =
-				new FormGroupTextArea<String>(formGroupView.newChildId(), new Model<String>(), Model.of("Text Area"));
+				new FormGroupTextArea<String>(formGroupView.newChildId(), Model.of("Text Area"), new Model<String>());
 		formGroupView.add(textAreaFormGroup);
 
 		FormGroupCheckBox checkBoxFormGroup =
