@@ -28,8 +28,7 @@ import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupS
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupTextArea;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupTextField;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupUrlTextField;
-import net.dontdrinkandroot.wicket.bootstrap.css.ColumnSize;
-import net.dontdrinkandroot.wicket.bootstrap.css.CombinedColumnSize;
+import net.dontdrinkandroot.wicket.bootstrap.css.ColumnSizeMedium;
 
 
 public class FormPage extends AbstractBootstrapPage<Void>
@@ -148,11 +147,8 @@ public class FormPage extends AbstractBootstrapPage<Void>
 
 	private Form<Void> createFormComponentsHorizontalForm()
 	{
-		CombinedColumnSize labelSize = new CombinedColumnSize(ColumnSize.MD_3);
-		CombinedColumnSize formComponentSize = new CombinedColumnSize(ColumnSize.MD_9);
-
 		Form<Void> form =
-				new BootstrapForm<Void>("formComponentsHorizontalForm").setHorizontal(labelSize, formComponentSize);
+				new BootstrapForm<Void>("formComponentsHorizontalForm").setHorizontal(ColumnSizeMedium.SIZE_3);
 		this.createFormComponents(form);
 
 		form.add(new SubmitLink("submitButton").setBody(Model.of("Submit")).add(new ButtonBehavior()));
@@ -169,20 +165,20 @@ public class FormPage extends AbstractBootstrapPage<Void>
 				new FormGroupTextField<String>(formGroupView.newChildId(), Model.of("Text Field"), new Model<String>());
 		formGroupView.add(textFieldFormGroup);
 
-		formGroupView.add(new FormGroupUrlTextField(formGroupView.newChildId(), new Model<String>(), Model.of("URL")));
+		formGroupView.add(new FormGroupUrlTextField(formGroupView.newChildId(), Model.of("URL"), new Model<String>()));
 
 		FormGroupTextArea<String> textAreaFormGroup =
 				new FormGroupTextArea<String>(formGroupView.newChildId(), Model.of("Text Area"), new Model<String>());
 		formGroupView.add(textAreaFormGroup);
 
 		FormGroupCheckBox checkBoxFormGroup =
-				new FormGroupCheckBox(formGroupView.newChildId(), new Model<Boolean>(), Model.of("Check Box"));
+				new FormGroupCheckBox(formGroupView.newChildId(), Model.of("Check Box"), new Model<Boolean>());
 		formGroupView.add(checkBoxFormGroup);
 
 		FormGroupSelect<Integer> selectFormGroup = new FormGroupSelect<Integer>(
 				formGroupView.newChildId(),
-				new Model<Integer>(2),
 				Model.of("Select"),
+				new Model<Integer>(2),
 				Arrays.asList(new Integer[] { 1, 2, 3, 4, 5 }));
 		formGroupView.add(selectFormGroup);
 
@@ -193,12 +189,12 @@ public class FormPage extends AbstractBootstrapPage<Void>
 		}
 
 		FormGroupAutoComplete autoComplete =
-				new FormGroupAutoComplete("autoComplete", new Model<String>(), Model.of("Countries")) {
+				new FormGroupAutoComplete("autoComplete", Model.of("Countries"), new Model<String>()) {
 
 					@Override
 					protected List<String> getChoices(String selection)
 					{
-						if (null == selection || "" == selection) {
+						if ((null == selection) || ("" == selection)) {
 							return countryNames;
 						}
 
