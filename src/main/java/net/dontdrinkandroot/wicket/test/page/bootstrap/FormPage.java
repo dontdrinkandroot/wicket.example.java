@@ -28,7 +28,7 @@ import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupS
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupTextArea;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupTextField;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupUrlTextField;
-import net.dontdrinkandroot.wicket.bootstrap.css.ColumnSizeMedium;
+import net.dontdrinkandroot.wicket.bootstrap.css.grid.ColumnSizeMedium;
 
 
 public class FormPage extends AbstractBootstrapPage<Void>
