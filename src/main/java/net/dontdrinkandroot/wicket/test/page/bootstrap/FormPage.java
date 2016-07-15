@@ -20,8 +20,8 @@ import org.apache.wicket.validation.ValidationError;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 import net.dontdrinkandroot.wicket.bootstrap.behavior.ButtonBehavior;
+import net.dontdrinkandroot.wicket.bootstrap.behavior.form.FormStyleBehavior;
 import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButtonLink;
-import net.dontdrinkandroot.wicket.bootstrap.component.form.BootstrapForm;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupAutoComplete;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupCheckBox;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupSelect;
@@ -69,7 +69,7 @@ public class FormPage extends AbstractBootstrapPage<Void>
 				new Model<String>());
 		eMailField.getFormComponent().add(EmailAddressValidator.getInstance());
 		eMailField.getFormComponent().setRequired(true);
-		eMailField.addOnlineValidation("blur");
+		eMailField.addAjaxValidation("blur");
 		eMailField.setHelpTextModel(Model.of("This is a static help text"));
 		formGroupsView.add(eMailField);
 
@@ -87,7 +87,7 @@ public class FormPage extends AbstractBootstrapPage<Void>
 				}
 			}
 		});
-		onInputValidationField.addOnlineValidation("input", new ThrottlingSettings(Duration.milliseconds(250), true));
+		onInputValidationField.addAjaxValidation("input", new ThrottlingSettings(Duration.milliseconds(250), true));
 		formGroupsView.add(onInputValidationField);
 
 		final FormGroupTextField<String> requiredField = new FormGroupTextField<String>(
@@ -147,8 +147,8 @@ public class FormPage extends AbstractBootstrapPage<Void>
 
 	private Form<Void> createFormComponentsHorizontalForm()
 	{
-		Form<Void> form =
-				new BootstrapForm<Void>("formComponentsHorizontalForm").setHorizontal(ColumnSizeMedium.SIZE_3);
+		Form<Void> form = new Form<Void>("formComponentsHorizontalForm");
+		form.add(new FormStyleBehavior().setHorizontal(ColumnSizeMedium.COLUMNS_9));
 		this.createFormComponents(form);
 
 		form.add(new SubmitLink("submitButton").setBody(Model.of("Submit")).add(new ButtonBehavior()));
