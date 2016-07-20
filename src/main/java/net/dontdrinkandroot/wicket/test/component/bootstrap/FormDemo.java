@@ -4,7 +4,7 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 
-import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButtonLink;
+import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButton;
 import net.dontdrinkandroot.wicket.bootstrap.css.ButtonStyle;
 
 
@@ -20,7 +20,7 @@ public class FormDemo extends GenericPanel<Void>
 		disablingSubmitForm.setOutputMarkupId(true);
 		this.add(disablingSubmitForm);
 
-		DisablingSubmitButtonLink submitLink = new DisablingSubmitButtonLink("submitLink") {
+		DisablingSubmitButton submitLink = new DisablingSubmitButton("submitLink") {
 
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form)

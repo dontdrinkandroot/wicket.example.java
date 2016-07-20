@@ -81,7 +81,7 @@ public class ButtonPage extends AbstractBootstrapPage<Void>
 		ButtonGroup<Void> singleButtonGroup = new ButtonGroup<Void>("singleButtonGroup") {
 
 			@Override
-			protected void createButtons(RepeatingView buttonView)
+			protected void populateButtons(RepeatingView buttonView)
 			{
 
 				buttonView.add(new AjaxLink<Void>(buttonView.newChildId(), null) {

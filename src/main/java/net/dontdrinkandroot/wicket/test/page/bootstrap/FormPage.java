@@ -21,7 +21,7 @@ import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 import net.dontdrinkandroot.wicket.bootstrap.behavior.ButtonBehavior;
 import net.dontdrinkandroot.wicket.bootstrap.behavior.form.FormStyleBehavior;
-import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButtonLink;
+import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButton;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupAutoComplete;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupCheckBox;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupSelect;
@@ -97,7 +97,7 @@ public class FormPage extends AbstractBootstrapPage<Void>
 		requiredField.getFormComponent().setRequired(true);
 		formGroupsView.add(requiredField);
 
-		DisablingSubmitButtonLink submitLink = new DisablingSubmitButtonLink("submitLink") {
+		DisablingSubmitButton submitLink = new DisablingSubmitButton("submitLink") {
 
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form)
