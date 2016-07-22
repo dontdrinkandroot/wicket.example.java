@@ -21,6 +21,7 @@ import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 import net.dontdrinkandroot.wicket.bootstrap.behavior.ButtonBehavior;
 import net.dontdrinkandroot.wicket.bootstrap.behavior.form.FormStyleBehavior;
+import net.dontdrinkandroot.wicket.bootstrap.behavior.form.HelpTextBehavior;
 import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButton;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupAutoComplete;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupCheckBox;
@@ -70,7 +71,7 @@ public class FormPage extends AbstractBootstrapPage<Void>
 		eMailField.getFormComponent().add(EmailAddressValidator.getInstance());
 		eMailField.getFormComponent().setRequired(true);
 		eMailField.addAjaxValidation("blur");
-		eMailField.setHelpTextModel(Model.of("This is a static help text"));
+		eMailField.add(new HelpTextBehavior(Model.of("This is a static help text")));
 		formGroupsView.add(eMailField);
 
 		final FormGroupTextField<String> onInputValidationField = new FormGroupTextField<String>(
@@ -194,7 +195,7 @@ public class FormPage extends AbstractBootstrapPage<Void>
 					@Override
 					protected List<String> getChoices(String selection)
 					{
-						if ((null == selection) || ("" == selection)) {
+						if (null == selection || "" == selection) {
 							return countryNames;
 						}
 
