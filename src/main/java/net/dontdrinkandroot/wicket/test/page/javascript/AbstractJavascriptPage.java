@@ -4,10 +4,10 @@ import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import net.dontdrinkandroot.wicket.bootstrap.component.item.BookmarkablePageLinkItem;
-import net.dontdrinkandroot.wicket.test.page.DecoratorSidebarPage;
+import net.dontdrinkandroot.wicket.test.page.DecoratorPage;
 
 
-public class AbstractJavascriptPage<T> extends DecoratorSidebarPage<T>
+public class AbstractJavascriptPage<T> extends DecoratorPage<T>
 {
 
 	public AbstractJavascriptPage(PageParameters parameters)
@@ -16,11 +16,11 @@ public class AbstractJavascriptPage<T> extends DecoratorSidebarPage<T>
 	}
 
 	@Override
-	protected void createNavItems(RepeatingView navItemView)
+	protected void populateNavbarRightItems(RepeatingView navItemView)
 	{
+		super.populateNavbarRightItems(navItemView);
 		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), "Callback", CallbackPage.class));
 		navItemView.add(
 				new BookmarkablePageLinkItem(navItemView.newChildId(), "ScrollToBottom", ScrollToBottomPage.class));
 	}
-
 }

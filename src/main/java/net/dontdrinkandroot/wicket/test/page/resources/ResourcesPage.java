@@ -9,12 +9,14 @@ import org.apache.wicket.request.resource.PackageResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.SharedResourceReference;
 
-import net.dontdrinkandroot.wicket.test.page.DecoratorWidePage;
+import net.dontdrinkandroot.wicket.test.page.DecoratorPage;
 
 
-public class ResourcesPage extends DecoratorWidePage<Void> {
+public class ResourcesPage extends DecoratorPage<Void>
+{
 
-	public ResourcesPage(final PageParameters parameters) {
+	public ResourcesPage(final PageParameters parameters)
+	{
 
 		super(parameters);
 

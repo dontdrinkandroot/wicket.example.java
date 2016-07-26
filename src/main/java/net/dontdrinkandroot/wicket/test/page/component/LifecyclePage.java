@@ -3,10 +3,10 @@ package net.dontdrinkandroot.wicket.test.page.component;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import net.dontdrinkandroot.wicket.test.component.LifecycleComponent;
-import net.dontdrinkandroot.wicket.test.page.DecoratorWidePage;
+import net.dontdrinkandroot.wicket.test.page.DecoratorPage;
 
 
-public class LifecyclePage extends DecoratorWidePage<Void>
+public class LifecyclePage extends DecoratorPage<Void>
 {
 
 	public LifecyclePage(PageParameters parameters)

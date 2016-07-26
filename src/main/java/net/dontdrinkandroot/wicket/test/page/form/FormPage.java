@@ -15,10 +15,10 @@ import org.apache.wicket.util.time.Duration;
 
 import net.dontdrinkandroot.wicket.bootstrap.component.feedback.FencedFeedbackPanel;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupTextField;
-import net.dontdrinkandroot.wicket.test.page.DecoratorWidePage;
+import net.dontdrinkandroot.wicket.test.page.DecoratorPage;
 
 
-public class FormPage extends DecoratorWidePage<Void>
+public class FormPage extends DecoratorPage<Void>
 {
 
 	public FormPage(PageParameters parameters)

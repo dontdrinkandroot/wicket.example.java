@@ -91,6 +91,12 @@
 			<artifactId>wicket.bootstrap</artifactId>
 			<version>${net.dontdrinkandroot.wicket.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>net.dontdrinkandroot</groupId>
+			<artifactId>wicket.dontdrinkandroot</artifactId>
+			<version>${net.dontdrinkandroot.wicket.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>

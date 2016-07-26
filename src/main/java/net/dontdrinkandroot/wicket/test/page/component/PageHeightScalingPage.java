@@ -1,15 +1,17 @@
 package net.dontdrinkandroot.wicket.test.page.component;
 
-import net.dontdrinkandroot.wicket.behavior.PageHeightScalingBehavior;
-import net.dontdrinkandroot.wicket.test.page.DecoratorWidePage;
-
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+import net.dontdrinkandroot.wicket.behavior.PageHeightScalingBehavior;
+import net.dontdrinkandroot.wicket.test.page.DecoratorPage;
 
-public class PageHeightScalingPage extends DecoratorWidePage<Void> {
 
-	public PageHeightScalingPage(PageParameters parameters) {
+public class PageHeightScalingPage extends DecoratorPage<Void>
+{
+
+	public PageHeightScalingPage(PageParameters parameters)
+	{
 
 		super(parameters);
 

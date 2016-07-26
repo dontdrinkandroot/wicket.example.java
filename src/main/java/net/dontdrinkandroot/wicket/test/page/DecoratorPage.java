@@ -1,17 +1,22 @@
 package net.dontdrinkandroot.wicket.test.page;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-import net.dontdrinkandroot.wicket.bootstrap.component.feedback.FencedFeedbackPanel;
+import net.dontdrinkandroot.wicket.behavior.CssClassAppender;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.BookmarkablePageLinkItem;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.DropDownItem;
+import net.dontdrinkandroot.wicket.bootstrap.css.BootstrapCssClass;
+import net.dontdrinkandroot.wicket.bootstrap.headeritem.DontdrinkandrootBootstrap33JsHeaderItem;
+import net.dontdrinkandroot.wicket.bootstrap.headeritem.DontdrinkandrootBootstrapCssHeaderItem;
+import net.dontdrinkandroot.wicket.bootstrap.page.StandardBootstrapPage;
+import net.dontdrinkandroot.wicket.test.WicketApplication;
 import net.dontdrinkandroot.wicket.test.page.bootstrap.AbstractBootstrapPage;
 import net.dontdrinkandroot.wicket.test.page.bootstrap.AlertPage;
 import net.dontdrinkandroot.wicket.test.page.bootstrap.ButtonPage;
@@ -31,11 +36,8 @@ import net.dontdrinkandroot.wicket.test.page.javascript.CallbackPage;
 import net.dontdrinkandroot.wicket.test.page.resources.ResourcesPage;
 
 
-public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.bootstrap.page.BootstrapPage<T>
+public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
 {
-
-	private FeedbackPanel feedbackPanel;
-
 
 	public DecoratorPage(PageParameters parameters)
 	{
@@ -48,34 +50,17 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 	}
 
 	@Override
-	protected void onInitialize()
+	protected Component createNavBar(String id)
 	{
-		super.onInitialize();
-
-		this.feedbackPanel = new FencedFeedbackPanel("feedbackPanel");
-		this.feedbackPanel.setOutputMarkupId(true);
-		this.add(this.feedbackPanel);
-
-		this.add(new Label("pageHeading", this.pageHeadingModel));
-
-		final RepeatingView navItemView = new RepeatingView("navItem");
-		this.createNavItems(navItemView);
-		this.add(navItemView);
-
-		// BookmarkablePageLink<?> signInLink = new BookmarkablePageLink<Void>("signInLink",
-		// SignInPage.class);
-		// this.add(signInLink);
-		//
-		// BookmarkablePageLink<?> signOutLink = new BookmarkablePageLink<Void>("signOutLink",
-		// SignOutPage.class);
-		// this.add(signOutLink);
-		//
-		// this.add(new BookmarkablePageLink<T>("buttonsLink", ButtonPage.class));
-		// this.add(new BookmarkablePageLink<T>("progressLink", ProgressPage.class));
+		Component navBar = super.createNavBar(id);
+		navBar.add(new CssClassAppender(BootstrapCssClass.NAVBAR_FIXED_TOP));
+		return navBar;
 	}
 
-	private void createNavItems(RepeatingView navItemView)
+	@Override
+	protected void populateNavbarLeftItems(RepeatingView navItemView)
 	{
+		super.populateNavbarLeftItems(navItemView);
 		navItemView.add(new DropDownItem(navItemView.newChildId(), "Bootstrap") {
 
 			@Override
@@ -141,11 +126,26 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 	}
 
 	@Override
+	protected Component createBrand(String id)
+	{
+		BookmarkablePageLink<Void> brand = new BookmarkablePageLink<Void>(id, WicketApplication.get().getHomePage());
+		brand.setBody(Model.of("dontdrinkandroot"));
+
+		return brand;
+	}
+
+	@Override
 	public void renderHead(IHeaderResponse response)
 	{
-		super.renderHead(response);
-
+		response.render(new DontdrinkandrootBootstrapCssHeaderItem());
+		response.render(new DontdrinkandrootBootstrap33JsHeaderItem(true));
 		response.render(CssHeaderItem.forCSS("body {padding-top: 60px}", "bodyPadding"));
+	}
+
+	@Override
+	protected IModel<String> createPageTitlePrefixModel()
+	{
+		return Model.of("dontdrinkandroot");
 	}
 
 	@Override
@@ -153,10 +153,4 @@ public abstract class DecoratorPage<T> extends net.dontdrinkandroot.wicket.boots
 	{
 		return new Model<String>(this.getClass().getSimpleName());
 	}
-
-	protected FeedbackPanel getFeedbackPanel()
-	{
-		return this.feedbackPanel;
-	}
-
 }

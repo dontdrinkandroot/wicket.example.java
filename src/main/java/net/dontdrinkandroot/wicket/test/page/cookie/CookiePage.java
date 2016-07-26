@@ -6,12 +6,14 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.cookies.CookieUtils;
 
-import net.dontdrinkandroot.wicket.test.page.DecoratorWidePage;
+import net.dontdrinkandroot.wicket.test.page.DecoratorPage;
 
 
-public class CookiePage extends DecoratorWidePage<Void> {
+public class CookiePage extends DecoratorPage<Void>
+{
 
-	public CookiePage(PageParameters parameters) {
+	public CookiePage(PageParameters parameters)
+	{
 
 		super(parameters);
 

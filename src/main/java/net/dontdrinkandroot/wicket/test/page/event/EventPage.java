@@ -7,12 +7,14 @@ import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-import net.dontdrinkandroot.wicket.test.page.DecoratorWidePage;
+import net.dontdrinkandroot.wicket.test.page.DecoratorPage;
 
 
-public class EventPage extends DecoratorWidePage<Void> {
+public class EventPage extends DecoratorPage<Void>
+{
 
-	public EventPage(PageParameters parameters) {
+	public EventPage(PageParameters parameters)
+	{
 
 		super(parameters);
 
@@ -22,7 +24,8 @@ public class EventPage extends DecoratorWidePage<Void> {
 
 
 			@Override
-			public void onEvent(IEvent<?> event) {
+			public void onEvent(IEvent<?> event)
+			{
 
 				System.out.println(event.getSource());
 
@@ -39,7 +42,8 @@ public class EventPage extends DecoratorWidePage<Void> {
 		AjaxLink<Void> eventLink = new AjaxLink<Void>("eventLink") {
 
 			@Override
-			public void onClick(AjaxRequestTarget target) {
+			public void onClick(AjaxRequestTarget target)
+			{
 
 				this.send(feedbackPanel, Broadcast.EXACT, target);
 			}
