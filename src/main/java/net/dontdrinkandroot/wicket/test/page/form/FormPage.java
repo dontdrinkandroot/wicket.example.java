@@ -14,7 +14,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.time.Duration;
 
 import net.dontdrinkandroot.wicket.bootstrap.component.feedback.FencedFeedbackPanel;
-import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupTextField;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupInputText;
 import net.dontdrinkandroot.wicket.test.page.DecoratorPage;
 
 
@@ -40,10 +40,8 @@ public class FormPage extends DecoratorPage<Void>
 		typeAwareTextFieldForm.add(typeAwareTextFieldFeedbackPanel);
 
 		IModel<String> typeAwareTextFieldModel = Model.of("");
-		final FormGroupTextField<String> typeAwareTextField = new FormGroupTextField<String>(
-				"typeAwareTextField",
-				Model.of("TypeAwareTextField"),
-				typeAwareTextFieldModel);
+		final FormGroupInputText typeAwareTextField =
+				new FormGroupInputText("typeAwareTextField", Model.of("TypeAwareTextField"), typeAwareTextFieldModel);
 		typeAwareTextFieldForm.add(typeAwareTextField);
 
 		AjaxEventBehavior typeAwareBehavior = new AjaxFormComponentUpdatingBehavior("input") {
@@ -51,7 +49,7 @@ public class FormPage extends DecoratorPage<Void>
 			@Override
 			protected void onUpdate(AjaxRequestTarget target)
 			{
-				if ((null != typeAwareTextField.getModelObject()) && !typeAwareTextField.getModelObject().isEmpty()) {
+				if (null != typeAwareTextField.getModelObject() && !typeAwareTextField.getModelObject().isEmpty()) {
 					typeAwareTextFieldFeedbackPanel.info(typeAwareTextField.getModelObject());
 				}
 				target.add(typeAwareTextFieldFeedbackPanel);

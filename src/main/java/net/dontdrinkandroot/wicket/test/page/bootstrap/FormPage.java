@@ -25,10 +25,10 @@ import net.dontdrinkandroot.wicket.bootstrap.behavior.form.HelpTextBehavior;
 import net.dontdrinkandroot.wicket.bootstrap.component.button.DisablingSubmitButton;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupAutoComplete;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupCheckBox;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupInputText;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupInputUrl;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupSelect;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupTextArea;
-import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupTextField;
-import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupUrlTextField;
 import net.dontdrinkandroot.wicket.bootstrap.css.grid.ColumnSizeMedium;
 
 
@@ -64,7 +64,7 @@ public class FormPage extends AbstractBootstrapPage<Void>
 		RepeatingView formGroupsView = new RepeatingView("formGroup");
 		validationForm.add(formGroupsView);
 
-		final FormGroupTextField<String> eMailField = new FormGroupTextField<String>(
+		final FormGroupInputText eMailField = new FormGroupInputText(
 				formGroupsView.newChildId(),
 				new Model<String>("EMail with onBlur"),
 				new Model<String>());
@@ -74,7 +74,7 @@ public class FormPage extends AbstractBootstrapPage<Void>
 		eMailField.add(new HelpTextBehavior(Model.of("This is a static help text")));
 		formGroupsView.add(eMailField);
 
-		final FormGroupTextField<String> onInputValidationField = new FormGroupTextField<String>(
+		final FormGroupInputText onInputValidationField = new FormGroupInputText(
 				formGroupsView.newChildId(),
 				new Model<String>("On Input Validation"),
 				new Model<String>("Type.."));
@@ -91,10 +91,8 @@ public class FormPage extends AbstractBootstrapPage<Void>
 		onInputValidationField.addAjaxValidation("input", new ThrottlingSettings(Duration.milliseconds(250), true));
 		formGroupsView.add(onInputValidationField);
 
-		final FormGroupTextField<String> requiredField = new FormGroupTextField<String>(
-				formGroupsView.newChildId(),
-				new Model<String>("required"),
-				new Model<String>());
+		final FormGroupInputText requiredField =
+				new FormGroupInputText(formGroupsView.newChildId(), new Model<String>("required"), new Model<String>());
 		requiredField.getFormComponent().setRequired(true);
 		formGroupsView.add(requiredField);
 
@@ -162,11 +160,11 @@ public class FormPage extends AbstractBootstrapPage<Void>
 		RepeatingView formGroupView = new RepeatingView("formGroup");
 		form.add(formGroupView);
 
-		FormGroupTextField<String> textFieldFormGroup =
-				new FormGroupTextField<String>(formGroupView.newChildId(), Model.of("Text Field"), new Model<String>());
+		FormGroupInputText textFieldFormGroup =
+				new FormGroupInputText(formGroupView.newChildId(), Model.of("Text Field"), new Model<String>());
 		formGroupView.add(textFieldFormGroup);
 
-		formGroupView.add(new FormGroupUrlTextField(formGroupView.newChildId(), Model.of("URL"), new Model<String>()));
+		formGroupView.add(new FormGroupInputUrl(formGroupView.newChildId(), Model.of("URL"), new Model<String>()));
 
 		FormGroupTextArea<String> textAreaFormGroup =
 				new FormGroupTextArea<String>(formGroupView.newChildId(), Model.of("Text Area"), new Model<String>());
