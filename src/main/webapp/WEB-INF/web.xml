@@ -3,14 +3,14 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 	version="2.4">
 
-	<display-name>wicket.test</display-name>
+	<display-name>example.wicket.dontdrinkandroot</display-name>
 
 	<filter>
 		<filter-name>wicket.wickettest</filter-name>
 		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
 		<init-param>
 			<param-name>applicationClassName</param-name>
-			<param-value>net.dontdrinkandroot.wicket.test.WicketApplication</param-value>
+			<param-value>net.dontdrinkandroot.example.wicket.dontdrinkandroot.WicketApplication</param-value>
 		</init-param>
 	</filter>
 
