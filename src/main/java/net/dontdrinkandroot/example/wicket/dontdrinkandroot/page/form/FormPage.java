@@ -1,5 +1,7 @@
 package net.dontdrinkandroot.example.wicket.dontdrinkandroot.page.form;
 
+import java.util.Date;
+
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxCallListener;
@@ -16,6 +18,7 @@ import org.apache.wicket.util.time.Duration;
 import net.dontdrinkandroot.example.wicket.dontdrinkandroot.page.DecoratorPage;
 import net.dontdrinkandroot.wicket.bootstrap.component.feedback.FencedFeedbackPanel;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupInputText;
+import net.dontdrinkandroot.wicket.component.form.formgroup.FormGroupDateTimePicker;
 
 
 public class FormPage extends DecoratorPage<Void>
@@ -30,6 +33,13 @@ public class FormPage extends DecoratorPage<Void>
 	protected void onInitialize()
 	{
 		super.onInitialize();
+
+		Form<Void> dateTimePickerForm = new Form<Void>("dateTimePickerForm");
+		this.add(dateTimePickerForm);
+
+		FormGroupDateTimePicker formGroupDateTimePicker =
+				new FormGroupDateTimePicker("yearMonthDayHourMinute", Model.of("yyyyMMddHHmm"), Model.of(new Date()));
+		dateTimePickerForm.add(formGroupDateTimePicker);
 
 		Form<?> typeAwareTextFieldForm = new Form<Void>("typeAwareTextFieldForm");
 		this.add(typeAwareTextFieldForm);
@@ -49,7 +59,7 @@ public class FormPage extends DecoratorPage<Void>
 			@Override
 			protected void onUpdate(AjaxRequestTarget target)
 			{
-				if (null != typeAwareTextField.getModelObject() && !typeAwareTextField.getModelObject().isEmpty()) {
+				if ((null != typeAwareTextField.getModelObject()) && !typeAwareTextField.getModelObject().isEmpty()) {
 					typeAwareTextFieldFeedbackPanel.info(typeAwareTextField.getModelObject());
 				}
 				target.add(typeAwareTextFieldFeedbackPanel);
