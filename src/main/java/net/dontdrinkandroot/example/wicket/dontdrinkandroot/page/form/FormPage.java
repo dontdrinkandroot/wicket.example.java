@@ -10,6 +10,7 @@ import org.apache.wicket.ajax.attributes.AjaxRequestAttributes.EventPropagation;
 import org.apache.wicket.ajax.attributes.ThrottlingSettings;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -37,9 +38,17 @@ public class FormPage extends DecoratorPage<Void>
 		Form<Void> dateTimePickerForm = new Form<Void>("dateTimePickerForm");
 		this.add(dateTimePickerForm);
 
-		FormGroupDateTimePicker formGroupDateTimePicker =
-				new FormGroupDateTimePicker("yearMonthDayHourMinute", Model.of("yyyyMMddHHmm"), Model.of(new Date()));
-		dateTimePickerForm.add(formGroupDateTimePicker);
+		RepeatingView formGroupDateTimeView = new RepeatingView("formGroupDateTime");
+		dateTimePickerForm.add(formGroupDateTimeView);
+
+		for (FormGroupDateTimePicker.Precision precision : FormGroupDateTimePicker.Precision.values()) {
+			FormGroupDateTimePicker formGroupDateTimePicker = new FormGroupDateTimePicker(
+					formGroupDateTimeView.newChildId(),
+					Model.of(precision.getConverterFormat()),
+					Model.of(new Date()),
+					precision);
+			formGroupDateTimeView.add(formGroupDateTimePicker);
+		}
 
 		Form<?> typeAwareTextFieldForm = new Form<Void>("typeAwareTextFieldForm");
 		this.add(typeAwareTextFieldForm);
