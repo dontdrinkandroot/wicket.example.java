@@ -10,7 +10,7 @@
 		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
 		<init-param>
 			<param-name>applicationClassName</param-name>
-			<param-value>net.dontdrinkandroot.example.wicket.dontdrinkandroot.WicketApplication</param-value>
+			<param-value>net.dontdrinkandroot.example.ddrstack.WicketApplication</param-value>
 		</init-param>
 	</filter>
 
