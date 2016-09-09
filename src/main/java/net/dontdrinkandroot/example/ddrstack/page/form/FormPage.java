@@ -1,7 +1,7 @@
 package net.dontdrinkandroot.example.ddrstack.page.form;
 
 import net.dontdrinkandroot.example.ddrstack.page.DecoratorPage;
-import net.dontdrinkandroot.extension.wicket.component.form.formgroup.FormGroupDateTimePicker;
+import net.dontdrinkandroot.extensions.wicket.component.form.formgroup.FormGroupDateTimePicker;
 import net.dontdrinkandroot.wicket.bootstrap.component.feedback.FencedFeedbackPanel;
 import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupInputText;
 import org.apache.wicket.ajax.AjaxEventBehavior;

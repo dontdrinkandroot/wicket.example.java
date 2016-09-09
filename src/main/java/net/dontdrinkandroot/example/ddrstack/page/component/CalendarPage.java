@@ -1,7 +1,7 @@
 package net.dontdrinkandroot.example.ddrstack.page.component;
 
 import net.dontdrinkandroot.example.ddrstack.page.DecoratorPage;
-import net.dontdrinkandroot.extension.wicket.component.calendar.DaySelectionTable;
+import net.dontdrinkandroot.extensions.wicket.component.calendar.DaySelectionTable;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
