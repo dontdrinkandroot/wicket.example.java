@@ -1,14 +1,5 @@
 package net.dontdrinkandroot.example.wicket.dontdrinkandroot.page;
 
-import org.apache.wicket.Component;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.html.link.BookmarkablePageLink;
-import org.apache.wicket.markup.repeater.RepeatingView;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
-
 import net.dontdrinkandroot.example.wicket.dontdrinkandroot.WicketApplication;
 import net.dontdrinkandroot.example.wicket.dontdrinkandroot.page.bootstrap.AbstractBootstrapPage;
 import net.dontdrinkandroot.example.wicket.dontdrinkandroot.page.bootstrap.FontAwesomeIconPage;
@@ -22,13 +13,21 @@ import net.dontdrinkandroot.example.wicket.dontdrinkandroot.page.event.EventPage
 import net.dontdrinkandroot.example.wicket.dontdrinkandroot.page.javascript.AbstractJavascriptPage;
 import net.dontdrinkandroot.example.wicket.dontdrinkandroot.page.javascript.CallbackPage;
 import net.dontdrinkandroot.example.wicket.dontdrinkandroot.page.resources.ResourcesPage;
+import net.dontdrinkandroot.extension.wicket.bootstrap.headeritem.DontdrinkandrootBootstrap33JsHeaderItem;
+import net.dontdrinkandroot.extension.wicket.bootstrap.headeritem.DontdrinkandrootBootstrapCssHeaderItem;
 import net.dontdrinkandroot.wicket.behavior.CssClassAppender;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.BookmarkablePageLinkItem;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.DropDownItem;
 import net.dontdrinkandroot.wicket.bootstrap.css.BootstrapCssClass;
-import net.dontdrinkandroot.wicket.bootstrap.headeritem.DontdrinkandrootBootstrap33JsHeaderItem;
-import net.dontdrinkandroot.wicket.bootstrap.headeritem.DontdrinkandrootBootstrapCssHeaderItem;
 import net.dontdrinkandroot.wicket.bootstrap.page.StandardBootstrapPage;
+import org.apache.wicket.Component;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.apache.wicket.markup.repeater.RepeatingView;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 
 public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
@@ -70,21 +69,30 @@ public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
 				itemView.add(
 						new BookmarkablePageLinkItem(
 								itemView.newChildId(),
-								"Font Awesome Icons",
-								FontAwesomeIconPage.class));
-				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Icons", IconPage.class));
+                                Model.of("Font Awesome Icons"),
+                                FontAwesomeIconPage.class));
+                itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), Model.of("Icons"), IconPage.class));
 
 			}
 		});
 		navItemView.add(
 				new BookmarkablePageLinkItem(navItemView.newChildId(), Model.of("Calendar"), CalendarPage.class));
-		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), "Resources", ResourcesPage.class));
-		navItemView.add(
+        navItemView.add(new BookmarkablePageLinkItem(
+                navItemView.newChildId(),
+                Model.of("Resources"),
+                ResourcesPage.class
+        ));
+        navItemView.add(
 				new BookmarkablePageLinkItem(
 						navItemView.newChildId(),
-						"Forms",
-						net.dontdrinkandroot.example.wicket.dontdrinkandroot.page.form.FormPage.class));
-		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), "JavaScript", CallbackPage.class) {
+                        Model.of("Forms"),
+                        net.dontdrinkandroot.example.wicket.dontdrinkandroot.page.form.FormPage.class));
+        navItemView.add(new BookmarkablePageLinkItem(
+                navItemView.newChildId(),
+                Model.of("JavaScript"),
+                CallbackPage.class
+        )
+        {
 
 			@Override
 			protected boolean isActive()
@@ -100,10 +108,14 @@ public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
 				itemView.add(
 						new BookmarkablePageLinkItem(
 								itemView.newChildId(),
-								"PageHeight Scaling",
-								PageHeightScalingPage.class));
-				itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), "Lifecycle", LifecyclePage.class));
-				itemView.add(
+                                Model.of("PageHeight Scaling"),
+                                PageHeightScalingPage.class));
+                itemView.add(new BookmarkablePageLinkItem(
+                        itemView.newChildId(),
+                        Model.of("Lifecycle"),
+                        LifecyclePage.class
+                ));
+                itemView.add(
 						new BookmarkablePageLinkItem(
 								itemView.newChildId(),
 								Model.of("Border and Fragment"),
@@ -111,9 +123,9 @@ public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
 			}
 		});
 
-		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), "Cookies", CookiePage.class));
-		navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), "Events", EventPage.class));
-	}
+        navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), Model.of("Cookies"), CookiePage.class));
+        navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), Model.of("Events"), EventPage.class));
+    }
 
 	@Override
 	protected Component createBrand(String id)

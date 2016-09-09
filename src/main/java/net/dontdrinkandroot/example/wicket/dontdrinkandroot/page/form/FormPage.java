@@ -1,7 +1,9 @@
 package net.dontdrinkandroot.example.wicket.dontdrinkandroot.page.form;
 
-import java.util.Date;
-
+import net.dontdrinkandroot.example.wicket.dontdrinkandroot.page.DecoratorPage;
+import net.dontdrinkandroot.extension.wicket.component.form.formgroup.FormGroupDateTimePicker;
+import net.dontdrinkandroot.wicket.bootstrap.component.feedback.FencedFeedbackPanel;
+import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupInputText;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxCallListener;
@@ -16,10 +18,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.time.Duration;
 
-import net.dontdrinkandroot.example.wicket.dontdrinkandroot.page.DecoratorPage;
-import net.dontdrinkandroot.wicket.bootstrap.component.feedback.FencedFeedbackPanel;
-import net.dontdrinkandroot.wicket.bootstrap.component.form.formgroup.FormGroupInputText;
-import net.dontdrinkandroot.wicket.component.form.formgroup.FormGroupDateTimePicker;
+import java.util.Date;
 
 
 public class FormPage extends DecoratorPage<Void>

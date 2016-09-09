@@ -30,7 +30,7 @@
 	</scm>
 
 	<properties>
-		<net.dontdrinkandroot.wicket.version>0.5.0-SNAPSHOT</net.dontdrinkandroot.wicket.version>
+		<version.net.dontdrinkandroot.extension>0.5.0-SNAPSHOT</version.net.dontdrinkandroot.extension>
 		<servlet-api.version>2.5</servlet-api.version>
 	</properties>
 
@@ -89,14 +89,8 @@
 
 		<dependency>
 			<groupId>net.dontdrinkandroot</groupId>
-			<artifactId>wicket.bootstrap</artifactId>
-			<version>${net.dontdrinkandroot.wicket.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>net.dontdrinkandroot</groupId>
-			<artifactId>wicket.dontdrinkandroot</artifactId>
-			<version>${net.dontdrinkandroot.wicket.version}</version>
+			<artifactId>extension.wicket</artifactId>
+			<version>${version.net.dontdrinkandroot.extension}</version>
 		</dependency>
 
 		<dependency>

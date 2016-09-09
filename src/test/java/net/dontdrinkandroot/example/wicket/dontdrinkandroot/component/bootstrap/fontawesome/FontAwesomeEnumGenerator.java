@@ -1,5 +1,8 @@
 package net.dontdrinkandroot.example.wicket.dontdrinkandroot.component.bootstrap.fontawesome;
 
+import com.esotericsoftware.yamlbeans.YamlReader;
+import org.junit.Ignore;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,21 +12,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Ignore;
-
-import com.esotericsoftware.yamlbeans.YamlReader;
-
 
 @Ignore
 public class FontAwesomeEnumGenerator
 {
-
 	public static void main(String[] args) throws IOException
 	{
 		URL iconUrl = new URL("https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/src/icons.yml");
 		BufferedReader urlReader = new BufferedReader(new InputStreamReader(iconUrl.openStream()));
 		try {
-
 			YamlReader yamlReader = new YamlReader(urlReader);
 			@SuppressWarnings("unchecked")
 			List<Object> iconList = (List<Object>) yamlReader.read(Map.class).get("icons");
@@ -57,5 +54,4 @@ public class FontAwesomeEnumGenerator
 			urlReader.close();
 		}
 	}
-
 }
