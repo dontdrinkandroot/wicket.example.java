@@ -1,7 +1,7 @@
 package net.dontdrinkandroot.example.ddrstack.page.component;
 
 import net.dontdrinkandroot.example.ddrstack.page.DecoratorPage;
-import net.dontdrinkandroot.wicket.extras.behavior.PageHeightScalingBehavior;
+import net.dontdrinkandroot.extensions.wicket.behavior.PageHeightScalingBehavior;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 

@@ -20,7 +20,7 @@ import net.dontdrinkandroot.wicket.behavior.CssClassAppender;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.BookmarkablePageLinkItem;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.SimpleDropDownItem;
 import net.dontdrinkandroot.wicket.bootstrap.css.BootstrapCssClass;
-import net.dontdrinkandroot.wicket.bootstrap.page.StandardBootstrapPage;
+import net.dontdrinkandroot.wicket.extras.page.StandardBootstrapPage;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -43,9 +43,9 @@ public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
     }
 
     @Override
-    protected Component createNavBar(String id)
+    protected Component createNavbar(String id)
     {
-        Component navBar = super.createNavBar(id);
+        Component navBar = super.createNavbar(id);
         navBar.add(new CssClassAppender(BootstrapCssClass.NAVBAR_FIXED_TOP));
         return navBar;
     }

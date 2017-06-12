@@ -1,6 +1,6 @@
 package net.dontdrinkandroot.example.ddrstack.page.javascript;
 
-import net.dontdrinkandroot.wicket.extras.behavior.ajax.ScrollToBottomBehavior;
+import net.dontdrinkandroot.extensions.wicket.behavior.ScrollToBottomBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
