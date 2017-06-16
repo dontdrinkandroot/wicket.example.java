@@ -18,7 +18,7 @@ import net.dontdrinkandroot.extensions.wicket.bootstrap.headeritem.Dontdrinkandr
 import net.dontdrinkandroot.extensions.wicket.bootstrap.headeritem.DontdrinkandrootBootstrapCssHeaderItem;
 import net.dontdrinkandroot.wicket.behavior.CssClassAppender;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.BookmarkablePageLinkItem;
-import net.dontdrinkandroot.wicket.bootstrap.component.item.SimpleDropDownItem;
+import net.dontdrinkandroot.wicket.bootstrap.component.item.RepeatingDropdownItem;
 import net.dontdrinkandroot.wicket.bootstrap.css.BootstrapCssClass;
 import net.dontdrinkandroot.wicket.extras.page.StandardBootstrapPage;
 import org.apache.wicket.Component;
@@ -54,7 +54,7 @@ public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
     protected void populateNavbarLeftItems(RepeatingView navItemView)
     {
         super.populateNavbarLeftItems(navItemView);
-        navItemView.add(new SimpleDropDownItem(navItemView.newChildId(), "Bootstrap")
+        navItemView.add(new RepeatingDropdownItem(navItemView.newChildId(), Model.of("Bootstrap"))
         {
             @Override
             protected boolean isActive()
@@ -99,7 +99,7 @@ public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
                 return AbstractJavascriptPage.class.isAssignableFrom(this.getPage().getClass());
             }
         });
-        navItemView.add(new SimpleDropDownItem(navItemView.newChildId(), "Components")
+        navItemView.add(new RepeatingDropdownItem(navItemView.newChildId(), Model.of("Components"))
         {
             @Override
             protected void populateItems(RepeatingView itemView)

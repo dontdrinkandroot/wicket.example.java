@@ -1,5 +1,6 @@
 package net.dontdrinkandroot.example.ddrstack.page.form;
 
+import net.dontdrinkandroot.example.ddrstack.component.bootstrap.DisablingSubmitFormPanel;
 import net.dontdrinkandroot.example.ddrstack.page.DecoratorPage;
 import net.dontdrinkandroot.extensions.wicket.component.form.formgroup.FormGroupDateTimePicker;
 import net.dontdrinkandroot.wicket.bootstrap.component.feedback.FencedFeedbackPanel;
@@ -20,91 +21,91 @@ import org.apache.wicket.util.time.Duration;
 
 import java.util.Date;
 
-
 public class FormPage extends DecoratorPage<Void>
 {
+    public FormPage(PageParameters parameters)
+    {
+        super(parameters);
+    }
 
-	public FormPage(PageParameters parameters)
-	{
-		super(parameters);
-	}
+    @Override
+    protected void onInitialize()
+    {
+        super.onInitialize();
 
-	@Override
-	protected void onInitialize()
-	{
-		super.onInitialize();
+        Form<Void> dateTimePickerForm = new Form<Void>("dateTimePickerForm");
+        this.add(dateTimePickerForm);
 
-		Form<Void> dateTimePickerForm = new Form<Void>("dateTimePickerForm");
-		this.add(dateTimePickerForm);
+        RepeatingView formGroupDateTimeView = new RepeatingView("formGroupDateTime");
+        dateTimePickerForm.add(formGroupDateTimeView);
 
-		RepeatingView formGroupDateTimeView = new RepeatingView("formGroupDateTime");
-		dateTimePickerForm.add(formGroupDateTimeView);
+        for (FormGroupDateTimePicker.Precision precision : FormGroupDateTimePicker.Precision.values()) {
+            FormGroupDateTimePicker formGroupDateTimePicker = new FormGroupDateTimePicker(
+                    formGroupDateTimeView.newChildId(),
+                    Model.of(precision.getConverterFormat()),
+                    Model.of(new Date()),
+                    precision
+            );
+            formGroupDateTimeView.add(formGroupDateTimePicker);
+        }
 
-		for (FormGroupDateTimePicker.Precision precision : FormGroupDateTimePicker.Precision.values()) {
-			FormGroupDateTimePicker formGroupDateTimePicker = new FormGroupDateTimePicker(
-					formGroupDateTimeView.newChildId(),
-					Model.of(precision.getConverterFormat()),
-					Model.of(new Date()),
-					precision);
-			formGroupDateTimeView.add(formGroupDateTimePicker);
-		}
+        Form<?> typeAwareTextFieldForm = new Form<Void>("typeAwareTextFieldForm");
+        this.add(typeAwareTextFieldForm);
 
-		Form<?> typeAwareTextFieldForm = new Form<Void>("typeAwareTextFieldForm");
-		this.add(typeAwareTextFieldForm);
+        final FencedFeedbackPanel typeAwareTextFieldFeedbackPanel =
+                new FencedFeedbackPanel("typeAwareTextFieldFeedbackPanel");
+        typeAwareTextFieldFeedbackPanel.setOutputMarkupId(true);
+        typeAwareTextFieldForm.add(typeAwareTextFieldFeedbackPanel);
 
-		final FencedFeedbackPanel typeAwareTextFieldFeedbackPanel =
-				new FencedFeedbackPanel("typeAwareTextFieldFeedbackPanel");
-		typeAwareTextFieldFeedbackPanel.setOutputMarkupId(true);
-		typeAwareTextFieldForm.add(typeAwareTextFieldFeedbackPanel);
+        IModel<String> typeAwareTextFieldModel = Model.of("");
+        final FormGroupInputText typeAwareTextField =
+                new FormGroupInputText("typeAwareTextField", Model.of("TypeAwareTextField"), typeAwareTextFieldModel);
+        typeAwareTextFieldForm.add(typeAwareTextField);
 
-		IModel<String> typeAwareTextFieldModel = Model.of("");
-		final FormGroupInputText typeAwareTextField =
-				new FormGroupInputText("typeAwareTextField", Model.of("TypeAwareTextField"), typeAwareTextFieldModel);
-		typeAwareTextFieldForm.add(typeAwareTextField);
+        AjaxEventBehavior typeAwareBehavior = new AjaxFormComponentUpdatingBehavior("input")
+        {
+            @Override
+            protected void onUpdate(AjaxRequestTarget target)
+            {
+                if ((null != typeAwareTextField.getModelObject()) && !typeAwareTextField.getModelObject().isEmpty()) {
+                    typeAwareTextFieldFeedbackPanel.info(typeAwareTextField.getModelObject());
+                }
+                target.add(typeAwareTextFieldFeedbackPanel);
+            }
 
-		AjaxEventBehavior typeAwareBehavior = new AjaxFormComponentUpdatingBehavior("input") {
+            @Override
+            protected void updateAjaxAttributes(AjaxRequestAttributes attributes)
+            {
+                super.updateAjaxAttributes(attributes);
+                attributes.setThrottlingSettings(
+                        new ThrottlingSettings("textfield.input", Duration.milliseconds(250), true));
+            }
+        };
 
-			@Override
-			protected void onUpdate(AjaxRequestTarget target)
-			{
-				if ((null != typeAwareTextField.getModelObject()) && !typeAwareTextField.getModelObject().isEmpty()) {
-					typeAwareTextFieldFeedbackPanel.info(typeAwareTextField.getModelObject());
-				}
-				target.add(typeAwareTextFieldFeedbackPanel);
-			}
+        AjaxEventBehavior preventEnterBehavior = new AjaxFormComponentUpdatingBehavior("keypress")
+        {
+            @Override
+            protected void updateAjaxAttributes(AjaxRequestAttributes attributes)
+            {
+                super.updateAjaxAttributes(attributes);
+                AjaxCallListener ajaxCallListener = new AjaxCallListener();
+                ajaxCallListener.onPrecondition(
+                        "var keyCode = Wicket.Event.keyCode(attrs.event); if (keyCode === 13) {attrs.event.preventDefault(); return false;} else {return true;}");
 
-			@Override
-			protected void updateAjaxAttributes(AjaxRequestAttributes attributes)
-			{
-				super.updateAjaxAttributes(attributes);
-				attributes.setThrottlingSettings(
-						new ThrottlingSettings("textfield.input", Duration.milliseconds(250), true));
-			}
-		};
+                attributes.getAjaxCallListeners().add(ajaxCallListener);
+                attributes.setEventPropagation(EventPropagation.STOP_IMMEDIATE);
+            }
 
-		AjaxEventBehavior preventEnterBehavior = new AjaxFormComponentUpdatingBehavior("keypress") {
+            @Override
+            protected void onUpdate(AjaxRequestTarget target)
+            {
+                /* Noop */
+            }
+        };
 
-			@Override
-			protected void updateAjaxAttributes(AjaxRequestAttributes attributes)
-			{
-				super.updateAjaxAttributes(attributes);
-				AjaxCallListener ajaxCallListener = new AjaxCallListener();
-				ajaxCallListener.onPrecondition(
-						"var keyCode = Wicket.Event.keyCode(attrs.event); if (keyCode === 13) {attrs.event.preventDefault(); return false;} else {return true;}");
+        typeAwareTextField.getFormComponent().add(preventEnterBehavior);
+        typeAwareTextField.getFormComponent().add(typeAwareBehavior);
 
-				attributes.getAjaxCallListeners().add(ajaxCallListener);
-				attributes.setEventPropagation(EventPropagation.STOP_IMMEDIATE);
-			}
-
-			@Override
-			protected void onUpdate(AjaxRequestTarget target)
-			{
-				/* Noop */
-			}
-		};
-
-		typeAwareTextField.getFormComponent().add(preventEnterBehavior);
-		typeAwareTextField.getFormComponent().add(typeAwareBehavior);
-	}
-
+        this.add(new DisablingSubmitFormPanel("disablingSubmit"));
+    }
 }

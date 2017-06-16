@@ -6,16 +6,15 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 public class FragmentBorderPage extends AbstractBootstrapPage<Void>
 {
+    public FragmentBorderPage(PageParameters parameters)
+    {
+        super(parameters);
+    }
 
-	public FragmentBorderPage(PageParameters parameters)
-	{
-		super(parameters);
-	}
-
-	@Override
-	protected void onInitialize()
-	{
-		super.onInitialize();
-		this.add(new ExampleBorder("inputGroup"));
-	}
+    @Override
+    protected void onInitialize()
+    {
+        super.onInitialize();
+        this.add(new ExampleBorder("inputGroup"));
+    }
 }
