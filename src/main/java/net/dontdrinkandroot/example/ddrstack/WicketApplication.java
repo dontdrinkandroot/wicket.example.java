@@ -1,9 +1,9 @@
 package net.dontdrinkandroot.example.ddrstack;
 
 import com.giffing.wicket.spring.boot.starter.app.WicketBootStandardWebApplication;
-import net.dontdrinkandroot.example.ddrstack.component.DateImageResource;
-import net.dontdrinkandroot.example.ddrstack.page.component.CalendarPage;
-import net.dontdrinkandroot.example.ddrstack.page.resources.ResourcesPage;
+import net.dontdrinkandroot.example.ddrstack.wicket.component.DateImageResource;
+import net.dontdrinkandroot.example.ddrstack.wicket.page.component.CalendarPage;
+import net.dontdrinkandroot.example.ddrstack.wicket.page.resources.ResourcesPage;
 import org.apache.wicket.Page;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.springframework.stereotype.Component;
