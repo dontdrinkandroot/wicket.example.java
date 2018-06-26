@@ -4,10 +4,7 @@ import net.dontdrinkandroot.example.ddrstack.WicketApplication;
 import net.dontdrinkandroot.example.ddrstack.wicket.page.bootstrap.AbstractBootstrapPage;
 import net.dontdrinkandroot.example.ddrstack.wicket.page.bootstrap.FontAwesomeIconPage;
 import net.dontdrinkandroot.example.ddrstack.wicket.page.bootstrap.IconPage;
-import net.dontdrinkandroot.example.ddrstack.wicket.page.component.CalendarPage;
-import net.dontdrinkandroot.example.ddrstack.wicket.page.component.FragmentBorderPage;
-import net.dontdrinkandroot.example.ddrstack.wicket.page.component.LifecyclePage;
-import net.dontdrinkandroot.example.ddrstack.wicket.page.component.PageHeightScalingPage;
+import net.dontdrinkandroot.example.ddrstack.wicket.page.component.*;
 import net.dontdrinkandroot.example.ddrstack.wicket.page.cookie.CookiePage;
 import net.dontdrinkandroot.example.ddrstack.wicket.page.event.EventPage;
 import net.dontdrinkandroot.example.ddrstack.wicket.page.form.FormPage;
@@ -95,28 +92,29 @@ public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
             @Override
             protected void populateItems(RepeatingView itemView)
             {
-                itemView.add(
-                        new BookmarkablePageLinkItem(
-                                itemView.newChildId(),
-                                Model.of("Font Awesome Icons"),
-                                FontAwesomeIconPage.class
-                        ));
+                itemView.add(new BookmarkablePageLinkItem<Void>(
+                        itemView.newChildId(),
+                        Model.of("Font Awesome Icons"),
+                        FontAwesomeIconPage.class
+                ));
                 itemView.add(new BookmarkablePageLinkItem(itemView.newChildId(), Model.of("Icons"), IconPage.class));
             }
         });
-        navItemView.add(
-                new BookmarkablePageLinkItem(navItemView.newChildId(), Model.of("Calendar"), CalendarPage.class));
-        navItemView.add(new BookmarkablePageLinkItem(
+        navItemView.add(new BookmarkablePageLinkItem<Void>(
+                navItemView.newChildId(),
+                Model.of("Calendar"),
+                CalendarPage.class
+        ));
+        navItemView.add(new BookmarkablePageLinkItem<Void>(
                 navItemView.newChildId(),
                 Model.of("Resources"),
                 ResourcesPage.class
         ));
-        navItemView.add(
-                new BookmarkablePageLinkItem(
-                        navItemView.newChildId(),
-                        Model.of("Forms"),
-                        FormPage.class
-                ));
+        navItemView.add(new BookmarkablePageLinkItem<Void>(
+                navItemView.newChildId(),
+                Model.of("Forms"),
+                FormPage.class
+        ));
         navItemView.add(new BookmarkablePageLinkItem<Void>(
                 navItemView.newChildId(),
                 Model.of("JavaScript"),
@@ -134,23 +132,26 @@ public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
             @Override
             protected void populateItems(RepeatingView itemView)
             {
-                itemView.add(
-                        new BookmarkablePageLinkItem(
-                                itemView.newChildId(),
-                                Model.of("PageHeight Scaling"),
-                                PageHeightScalingPage.class
-                        ));
-                itemView.add(new BookmarkablePageLinkItem(
+                itemView.add(new BookmarkablePageLinkItem<Void>(
+                        itemView.newChildId(),
+                        Model.of("PageHeight Scaling"),
+                        PageHeightScalingPage.class
+                ));
+                itemView.add(new BookmarkablePageLinkItem<Void>(
                         itemView.newChildId(),
                         Model.of("Lifecycle"),
                         LifecyclePage.class
                 ));
-                itemView.add(
-                        new BookmarkablePageLinkItem(
-                                itemView.newChildId(),
-                                Model.of("Border and Fragment"),
-                                FragmentBorderPage.class
-                        ));
+                itemView.add(new BookmarkablePageLinkItem<Void>(
+                        itemView.newChildId(),
+                        Model.of("Border and Fragment"),
+                        FragmentBorderPage.class
+                ));
+                itemView.add(new BookmarkablePageLinkItem<Void>(
+                        itemView.newChildId(),
+                        Model.of("Data Table"),
+                        DataTablePage.class
+                ));
             }
         });
 

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
-public class ExampleEntity
+public class ExampleEntity implements net.dontdrinkandroot.extensions.springdatajpa.model.Entity<Long>
 {
     @Id
     @GeneratedValue

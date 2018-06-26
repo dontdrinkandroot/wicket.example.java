@@ -2,6 +2,8 @@ package net.dontdrinkandroot.example.ddrstack.configuration;
 
 import net.dontdrinkandroot.example.ddrstack.fixtures.ContextRefreshFixtureLoader;
 import net.dontdrinkandroot.example.ddrstack.fixtures.ExampleEntities;
+import net.dontdrinkandroot.extensions.springdatajpa.service.EntityLoader;
+import net.dontdrinkandroot.extensions.springdatajpa.service.EntityManagerEntityLoader;
 import net.dontdrinkandroot.fixtures.loader.FixtureLoader;
 import net.dontdrinkandroot.fixtures.purger.DatabasePurger;
 import net.dontdrinkandroot.fixtures.purger.MetamodelDatabasePurger;
@@ -29,5 +31,11 @@ public class ApplicationConfiguration
         return new ContextRefreshFixtureLoader(purger, beanFactory, Arrays.asList(
                 ExampleEntities.class
         ));
+    }
+
+    @Bean
+    public EntityLoader entityLoader()
+    {
+        return new EntityManagerEntityLoader();
     }
 }

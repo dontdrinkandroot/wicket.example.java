@@ -17,7 +17,7 @@ public class ExampleEntities implements Fixture
         ExampleEntity entity;
         Faker faker = new Faker(new Random(28976423948726384L));
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 97; i++) {
             entity = new ExampleEntity();
             entity.setStringField(faker.name().fullName());
             entity.setIntegerField(faker.random().nextInt(0, 1000));

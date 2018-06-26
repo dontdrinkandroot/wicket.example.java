@@ -41,6 +41,7 @@
 	</properties>
 
 	<build>
+
 		<plugins>
 
 			<plugin>
@@ -60,11 +61,13 @@
 	
 		<!-- Make sure HTML files are also copied from main/java -->
 		<resources>
-			<resource>
+
+            <resource>
 				<filtering>false</filtering>
 				<directory>src/main/resources</directory>
 			</resource>
-			<resource>
+
+            <resource>
 				<filtering>false</filtering>
 				<directory>src/main/java</directory>
 				<includes>
@@ -74,13 +77,17 @@
 					<exclude>**/*.java</exclude>
 				</excludes>
 			</resource>
-		</resources>
-		<testResources>
-			<testResource>
+
+        </resources>
+
+        <testResources>
+
+            <testResource>
 				<filtering>false</filtering>
 				<directory>src/test/resources</directory>
 			</testResource>
-			<testResource>
+
+            <testResource>
 				<filtering>false</filtering>
 				<directory>src/test/java</directory>
 				<includes>
@@ -90,8 +97,10 @@
 					<exclude>**/*.java</exclude>
 				</excludes>
 			</testResource>
-		</testResources>
-	</build>
+
+        </testResources>
+
+    </build>
 
 	<dependencyManagement>
 		<dependencies>
@@ -144,7 +153,12 @@
 			<version>${com.github.javafaker.version}</version>
 		</dependency>
 
-		<dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+        </dependency>
+
+        <dependency>
     		<groupId>com.esotericsoftware.yamlbeans</groupId>
     		<artifactId>yamlbeans</artifactId>
     		<version>1.09</version>
