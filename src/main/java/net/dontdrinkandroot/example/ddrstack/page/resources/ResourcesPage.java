@@ -1,7 +1,7 @@
 package net.dontdrinkandroot.example.ddrstack.page.resources;
 
+import net.dontdrinkandroot.example.ddrstack.component.DateImageResource;
 import net.dontdrinkandroot.example.ddrstack.page.DecoratorPage;
-import org.apache.log4j.lf5.util.Resource;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.image.resource.DefaultButtonImageResource;
 import org.apache.wicket.markup.html.link.ResourceLink;
@@ -19,7 +19,7 @@ public class ResourcesPage extends DecoratorPage<Void>
 		super(parameters);
 
 		final ResourceReference dateImageResourceReference =
-				new SharedResourceReference(Resource.class, "dateImage", null, null, null);
+				new SharedResourceReference(DateImageResource.class, "dateImage", null, null, null);
 
 		this.add(new Image("packageResource", new PackageResourceReference(this.getClass(), "test.png")));
 		this.add(new Image("sharedResource", new SharedResourceReference(this.getClass(), "test.png")));

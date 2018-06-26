@@ -16,10 +16,11 @@ import net.dontdrinkandroot.example.ddrstack.page.javascript.CallbackPage;
 import net.dontdrinkandroot.example.ddrstack.page.resources.ResourcesPage;
 import net.dontdrinkandroot.extensions.wicket.bootstrap.headeritem.DontdrinkandrootBootstrap33JsHeaderItem;
 import net.dontdrinkandroot.extensions.wicket.bootstrap.headeritem.DontdrinkandrootBootstrapCssHeaderItem;
-import net.dontdrinkandroot.wicket.behavior.CssClassAppender;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.BookmarkablePageLinkItem;
 import net.dontdrinkandroot.wicket.bootstrap.component.item.RepeatingDropdownItem;
-import net.dontdrinkandroot.wicket.bootstrap.css.BootstrapCssClass;
+import net.dontdrinkandroot.wicket.bootstrap.component.navbar.Navbar;
+import net.dontdrinkandroot.wicket.bootstrap.component.navbar.RepeatingNavbarNav;
+import net.dontdrinkandroot.wicket.bootstrap.css.NavbarPosition;
 import net.dontdrinkandroot.wicket.extras.page.StandardBootstrapPage;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -45,16 +46,45 @@ public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
     @Override
     protected Component createNavbar(String id)
     {
-        Component navBar = super.createNavbar(id);
-        navBar.add(new CssClassAppender(BootstrapCssClass.NAVBAR_FIXED_TOP));
+        Navbar navBar = new Navbar(id)
+        {
+            @Override
+            protected Component createBrand(String id)
+            {
+                return DecoratorPage.this.createBrand(id);
+            }
+
+            @Override
+            protected void populateCollapseItems(RepeatingView collapseItemView)
+            {
+                RepeatingNavbarNav navbarLeft = new RepeatingNavbarNav(collapseItemView.newChildId())
+                {
+                    @Override
+                    protected void populateItems(RepeatingView itemView)
+                    {
+                        DecoratorPage.this.populateNavbarLeftItems(itemView);
+                    }
+                };
+                collapseItemView.add(navbarLeft);
+
+                RepeatingNavbarNav navbarRight = new RepeatingNavbarNav(collapseItemView.newChildId())
+                {
+                    @Override
+                    protected void populateItems(RepeatingView itemView)
+                    {
+                        DecoratorPage.this.populateNavbarRightItems(itemView);
+                    }
+                };
+                collapseItemView.add(navbarRight);
+            }
+        };
+        navBar.setPosition(NavbarPosition.FIXED_TOP);
         return navBar;
     }
 
-    @Override
     protected void populateNavbarLeftItems(RepeatingView navItemView)
     {
-        super.populateNavbarLeftItems(navItemView);
-        navItemView.add(new RepeatingDropdownItem(navItemView.newChildId(), Model.of("Bootstrap"))
+        navItemView.add(new RepeatingDropdownItem<Void>(navItemView.newChildId(), Model.of("Bootstrap"))
         {
             @Override
             protected boolean isActive()
@@ -87,7 +117,7 @@ public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
                         Model.of("Forms"),
                         FormPage.class
                 ));
-        navItemView.add(new BookmarkablePageLinkItem(
+        navItemView.add(new BookmarkablePageLinkItem<Void>(
                 navItemView.newChildId(),
                 Model.of("JavaScript"),
                 CallbackPage.class
@@ -99,7 +129,7 @@ public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
                 return AbstractJavascriptPage.class.isAssignableFrom(this.getPage().getClass());
             }
         });
-        navItemView.add(new RepeatingDropdownItem(navItemView.newChildId(), Model.of("Components"))
+        navItemView.add(new RepeatingDropdownItem<Void>(navItemView.newChildId(), Model.of("Components"))
         {
             @Override
             protected void populateItems(RepeatingView itemView)
@@ -128,7 +158,11 @@ public abstract class DecoratorPage<T> extends StandardBootstrapPage<T>
         navItemView.add(new BookmarkablePageLinkItem(navItemView.newChildId(), Model.of("Events"), EventPage.class));
     }
 
-    @Override
+    protected void populateNavbarRightItems(RepeatingView navItemView)
+    {
+        /* Hook */
+    }
+
     protected Component createBrand(String id)
     {
         BookmarkablePageLink<Void> brand = new BookmarkablePageLink<Void>(id, WicketApplication.get().getHomePage());

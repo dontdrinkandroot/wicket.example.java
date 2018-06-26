@@ -19,7 +19,7 @@ public class DisablingSubmitFormPanel extends GenericPanel<Void>
         DisablingSubmitButton submitLink = new DisablingSubmitButton("submitLink")
         {
             @Override
-            protected void onSubmit(AjaxRequestTarget target, Form<?> form)
+            protected void onSubmit(AjaxRequestTarget target)
             {
                 try {
                     Thread.sleep(2000L);
